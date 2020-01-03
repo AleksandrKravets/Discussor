@@ -49,13 +49,21 @@ namespace WebUI
                 endpoints.MapAreaControllerRoute(
                     name: null,
                     areaName: "Admin",
-                    pattern: "Admin/{controller=Admin}/{action=Index}/{id?}"
-                );
+                    pattern: "Admin/{controller=Admin}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(
-                    name: "Default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}"
-                );
+                    name: null,
+                    pattern: "Post/{postId}",
+                    defaults: new { controller = "Post", action = "Post" });
+
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: null,
+                    pattern: "/",
+                    defaults: new { controller = "Home", action = "Index" });
             });
         }
     }

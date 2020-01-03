@@ -1,6 +1,8 @@
 ﻿using Application.Common.Interfaces;
 using Infrastructure.Contexts;
+using Infrastructure.Contracts;
 using Infrastructure.Identity;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -39,6 +41,16 @@ namespace Infrastructure
                 options.LoginPath = "/Account/Login";
                 options.AccessDeniedPath = "/Home/Index";
             });
+
+            services.AddTransient<IEmailSender, EmailSender>(i =>
+                new EmailSender(
+                    configuration["EmailSender:Host"],
+                    configuration.GetValue<int>("EmailSender:Port"),
+                    configuration.GetValue<bool>("EmailSender:EnableSSL"),
+                    configuration["EmailSender:UserName"],
+                    configuration["EmailSender:Password"]
+                )
+            );
 
             return services;
         }

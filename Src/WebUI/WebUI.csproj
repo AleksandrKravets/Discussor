@@ -16,7 +16,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Shared\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Post\" />
+    <Folder Include="Views\Reply\" />
+    <Folder Include="Views\Theme\" />
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
 </Project>
