@@ -1,16 +1,14 @@
 ﻿using Application.Common.Interfaces;
 using Domain.Entities;
+using Infrastructure.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Contexts
 {
-    // Наследуем от интерфейса
-    public class ApplicationDbContext : DbContext, IApplicationDbContext
+    public class ApplicationDbContext : IdentityDbContext<User>, IApplicationDbContext
     {
         public DbSet<Theme> Themes { get; set; }
         public DbSet<Post> Posts { get; set; }

@@ -1,10 +1,18 @@
-﻿using System;
+﻿using Domain.Common;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Domain.Entities
 {
-    class Post
+    public class Post : StoredEntity
     {
+        public string Title { get; set; }
+        public string Content { get; set; }
+        public DateTime DateOfCreation { get; set; }
+
+        public int ThemeId { get; set; }
+        public virtual Theme Theme { get; set; }
+        public virtual IEnumerable<Reply> Replies { get; set; }
     }
 }
