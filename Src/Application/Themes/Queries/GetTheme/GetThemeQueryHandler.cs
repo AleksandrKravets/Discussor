@@ -1,4 +1,6 @@
-﻿using Application.Common.Interfaces;
+﻿using Application.Common.Exceptions;
+using Application.Common.Interfaces;
+using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -21,6 +23,9 @@ namespace Application.Themes.Queries.GetTheme
         public async Task<ThemeViewModel> Handle(GetThemeQuery request, CancellationToken cancellationToken)
         {
             var theme = await _context.Themes.FirstOrDefaultAsync(theme => theme.Id == request.Id);
+
+            if (theme == null)
+                throw new NotFoundException(nameof(Theme), request.Id);
 
             var result = new ThemeViewModel
             {
