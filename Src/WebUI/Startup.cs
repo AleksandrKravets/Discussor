@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Infrastructure;
+using Application;
 
 namespace WebUI
 {
@@ -18,6 +20,10 @@ namespace WebUI
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddApplication();
+            services.AddInfrastructure(Configuration);
+
+            services.AddControllersWithViews();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -25,14 +31,31 @@ namespace WebUI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            } else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
             }
+
+            app.UseHttpsRedirection();
+
+            app.UseStaticFiles();
 
             app.UseRouting();
 
             app.UseEndpoints(endpoints => {
-                endpoints.MapGet("/", async context => {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapControllers();
+
+                endpoints.MapAreaControllerRoute(
+                    name: null,
+                    areaName: "Admin",
+                    pattern: "Admin/{controller=Admin}/{action=Index}/{id?}"
+                );
+
+                endpoints.MapControllerRoute(
+                    name: "Default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}"
+                );
             });
         }
     }
