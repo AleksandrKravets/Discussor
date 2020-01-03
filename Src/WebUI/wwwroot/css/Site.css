@@ -1,0 +1,21 @@
+﻿html {
+    position: relative;
+    min-height: 100%;
+    height: 100%;
+    font-family: monospace;
+}
+
+body {
+    height: 100%;
+    padding-bottom: 30px; /*#2E2B2B*/
+    background: #282626;
+}
+
+.navigation {
+    background: #282626;
+}
+
+.login-panel {
+    display: flex;
+}
+

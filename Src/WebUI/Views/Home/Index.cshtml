@@ -1,0 +1,25 @@
+﻿@model ThemesListViewModel
+
+<link href="~/css/Index.css" rel="stylesheet" />
+
+<div class="col-12 btn-create-theme text-light">
+    <a class="btn btn-primary btn-lg" asp-action="Create" asp-controller="Theme">
+        Create new theme
+    </a>
+</div>
+
+
+@foreach (var theme in Model.Themes)
+{
+    <div class="container content text-light">
+        <div class="col-12 theme">
+            <div class="col-2 theme-image-block">
+                <img class="theme-image" src="@theme.Image">
+            </div>
+            <div class="col-10 theme-block-content">
+                <div class="col-9 theme-title">@theme.Title</div>
+                <div class="col-3 theme-replies-number">Posts: @theme.PostsNumber</div>
+            </div>
+        </div>
+    </div>
+}

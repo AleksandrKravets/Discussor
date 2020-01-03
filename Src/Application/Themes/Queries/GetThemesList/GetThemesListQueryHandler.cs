@@ -27,7 +27,8 @@ namespace Application.Themes.Queries.GetThemesList
                     Id = theme.Id,
                     Title = theme.Title,
                     DateOfCreation = theme.DateOfCreation,
-                    Image = theme.Image
+                    Image = theme.Image,
+                    PostsNumber = theme.Posts.Count()
                 }).ToListAsync();
 
             var themesList = new ThemesListViewModel

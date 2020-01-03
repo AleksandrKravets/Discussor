@@ -52,6 +52,8 @@ namespace Infrastructure
                 )
             );
 
+            services.AddScoped<IImageConverter, ImageConverter>();
+
             return services;
         }
     }

@@ -10,5 +10,6 @@ namespace Application.Themes.Queries.GetThemesList
         public string Title { get; set; }
         public DateTime DateOfCreation { get; set; }
         public byte[] Image { get; set; }
+        public int PostsNumber { get; set; }
     }
 }
