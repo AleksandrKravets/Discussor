@@ -2,8 +2,10 @@
 using Application.Common.Interfaces;
 using Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,13 +28,24 @@ namespace Application.Posts.Queries.GetPost
             if (post == null)
                 throw new NotFoundException(nameof(Post), request.PostId);
 
+            var replies = await _context.PostReplies
+                .Where(reply => reply.PostId == request.PostId)
+                .Select(reply => new ReplyDto
+                {
+                    Id = reply.Id,
+                    Content = reply.Content,
+                    DateOfCreation = reply.DateOfCreation
+                })
+                .ToListAsync();
+
             var result = new PostViewModel
             {
                 Id = post.Id,
                 Title = post.Title,
                 Content = post.Content,
                 DateOfCreation = post.DateOfCreation,
-                ThemeId = post.ThemeId
+                ThemeId = post.ThemeId,
+                Replies = replies
             };
 
             return result;

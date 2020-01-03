@@ -41,7 +41,8 @@ namespace Application.Posts.Queries.GetPostsList
 
             var result = new PostsListViewModel
             {
-                Posts = posts
+                Posts = posts,
+                ThemeId = request.ThemeId
             };
 
             return result;
