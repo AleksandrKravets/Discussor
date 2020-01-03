@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Application.Replies.Queries.GetRepliesList
+namespace Application.Posts.Queries.GetPost
 {
-    public class GetRepliesListQuery : IRequest<RepliesListViewModel>
+    public class GetPostQuery : IRequest<PostViewModel>
     {
         public int PostId { get; set; }
     }

@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Application.Replies.Queries.GetRepliesList
+namespace Application.Posts.Commands.DeletePost
 {
-    public class GetRepliesListQuery : IRequest<RepliesListViewModel>
+    public class DeletePostCommand : IRequest
     {
         public int PostId { get; set; }
     }

@@ -1,4 +1,6 @@
-﻿using Application.Common.Interfaces;
+﻿using Application.Common.Exceptions;
+using Application.Common.Interfaces;
+using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -21,7 +23,13 @@ namespace Application.Replies.Queries.GetRepliesList
 
         public async Task<RepliesListViewModel> Handle(GetRepliesListQuery request, CancellationToken cancellationToken)
         {
+            var post = await _context.Posts.FindAsync(request.PostId);
+
+            if (post == null)
+                throw new NotFoundException(nameof(Post), request.PostId);
+
             var replies = await _context.PostReplies
+                .Where(reply => reply.PostId == request.PostId)
                 .Select(reply => new ReplyDto
                 {
                     Id = reply.Id,

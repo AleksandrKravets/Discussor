@@ -1,4 +1,5 @@
-﻿using Application.Common.Interfaces;
+﻿using Application.Common.Exceptions;
+using Application.Common.Interfaces;
 using Domain.Entities;
 using MediatR;
 using System;
@@ -20,6 +21,11 @@ namespace Application.Replies.Commands.CreateReply
 
         public async Task<int> Handle(CreateReplyCommand request, CancellationToken cancellationToken)
         {
+            var post = _context.Posts.FindAsync(request.PostId);
+
+            if (post == null)
+                throw new NotFoundException(nameof(Post), request.PostId);
+
             var reply = new Reply
             {
                 Content = request.Content,
@@ -28,6 +34,7 @@ namespace Application.Replies.Commands.CreateReply
             };
 
             await _context.PostReplies.AddAsync(reply);
+
             await _context.SaveChangesAsync(cancellationToken);
 
             return reply.Id;
