@@ -1,0 +1,10 @@
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\bin\Debug\netcoreapp3.1\WebUI.exe
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\obj\Debug\netcoreapp3.1\WebUI.csprojAssemblyReference.cache
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\obj\Debug\netcoreapp3.1\staticwebassets\WebUI.StaticWebAssets.Manifest.cache
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\obj\Debug\netcoreapp3.1\staticwebassets\WebUI.StaticWebAssets.xml
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\obj\Debug\netcoreapp3.1\WebUI.AssemblyInfoInputs.cache
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\obj\Debug\netcoreapp3.1\WebUI.AssemblyInfo.cs
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\obj\Debug\netcoreapp3.1\WebUI.RazorTargetAssemblyInfo.cache
