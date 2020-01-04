@@ -13,7 +13,6 @@ namespace Infrastructure.Services
         private string userName;
         private string password;
 
-        #region Ctor
         public EmailSender(string host, int port, bool enableSSL, string userName, string password)
         {
             this.host = host;
@@ -22,7 +21,6 @@ namespace Infrastructure.Services
             this.userName = userName;
             this.password = password;
         }
-        #endregion
 
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
