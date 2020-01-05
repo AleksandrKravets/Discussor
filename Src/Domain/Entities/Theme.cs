@@ -1,5 +1,4 @@
 ﻿using Domain.Common;
-using Domain.Identity;
 using System;
 using System.Collections.Generic;
 
@@ -12,7 +11,6 @@ namespace Domain.Entities
         public byte[] Image { get; set; }
 
         public virtual IEnumerable<Post> Posts { get; set; }
-        public int CreatorId { get; set; }
-        public User Creator { get; set; }
+        public string UserId { get; set; }
     }
 }

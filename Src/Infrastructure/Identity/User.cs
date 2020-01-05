@@ -2,7 +2,7 @@
 using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 
-namespace Domain.Identity
+namespace Infrastructure.Identity
 {
     public class User : IdentityUser
     {

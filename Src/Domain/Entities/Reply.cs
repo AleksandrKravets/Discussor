@@ -1,5 +1,4 @@
 ﻿using Domain.Common;
-using Domain.Identity;
 using System;
 
 namespace Domain.Entities
@@ -11,7 +10,6 @@ namespace Domain.Entities
 
         public int PostId { get; set; }
         public virtual Post Post { get; set; }
-        public int CreatorId { get; set; }
-        public User Creator { get; set; }
+        public string UserId { get; set; }
     }
 }

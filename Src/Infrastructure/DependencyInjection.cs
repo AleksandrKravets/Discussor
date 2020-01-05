@@ -1,7 +1,7 @@
 ﻿using Application.Common.Interfaces;
-using Domain.Identity;
 using Infrastructure.Contexts;
 using Infrastructure.Contracts;
+using Infrastructure.Identity;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

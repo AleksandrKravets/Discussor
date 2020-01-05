@@ -1,5 +1,4 @@
 ﻿using Domain.Common;
-using Domain.Identity;
 using System;
 using System.Collections.Generic;
 
@@ -14,7 +13,6 @@ namespace Domain.Entities
         public int ThemeId { get; set; }
         public virtual Theme Theme { get; set; }
         public virtual IEnumerable<Reply> Replies { get; set; }
-        public int CreatorId { get; set; }
-        public User Creator { get; set; }
+        public string UserId { get; set; }
     }
 }
