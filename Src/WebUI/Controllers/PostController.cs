@@ -3,12 +3,8 @@ using Application.Posts.Commands.DeletePost;
 using Application.Posts.Commands.UpdatePost;
 using Application.Posts.Queries.GetPost;
 using Application.Posts.Queries.GetPostsList;
-using Application.Replies.Queries.GetRepliesList;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace WebUI.Controllers

@@ -3,7 +3,6 @@ using Application.Replies.Commands.DeleteReply;
 using Application.Replies.Commands.UpdateReply;
 using Application.Replies.Queries.GetReply;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Threading.Tasks;
 
 namespace WebUI.Controllers

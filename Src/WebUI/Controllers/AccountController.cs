@@ -1,11 +1,7 @@
-﻿using Infrastructure.Contracts;
-using Infrastructure.Identity;
+﻿using Domain.Identity;
+using Infrastructure.Contracts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebUI.Controllers
 {
