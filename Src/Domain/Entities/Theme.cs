@@ -12,5 +12,6 @@ namespace Domain.Entities
         public byte[] Image { get; set; }
 
         public virtual IEnumerable<Post> Posts { get; set; }
+        public int CreatorId { get; set; }
     }
 }

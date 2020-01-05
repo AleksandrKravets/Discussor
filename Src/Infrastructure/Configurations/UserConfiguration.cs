@@ -1,4 +1,4 @@
-﻿using Infrastructure.Identity;
+﻿using Domain.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -11,20 +11,17 @@ namespace Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            //builder.HasMany(c => c.Posts)
-            //    .WithOne(c => c.Author)
-            //    .IsRequired()
-            //    .OnDelete(DeleteBehavior.NoAction);
+            builder.HasMany(c => c.Posts)
+                .WithOne(c => c.Creator)
+                .IsRequired();
 
-            //builder.HasMany(c => c.Replies)
-            //    .WithOne(c => c.Author)
-            //    .IsRequired()
-            //    .OnDelete(DeleteBehavior.NoAction);
+            builder.HasMany(c => c.Replies)
+                .WithOne(c => c.Creator)
+                .IsRequired();
 
-            //builder.HasMany(c => c.Themes)
-            //    .WithOne(c => c.Creator)
-            //    .IsRequired()
-            //    .OnDelete(DeleteBehavior.NoAction);
+            builder.HasMany(c => c.Themes)
+                .WithOne(c => c.Creator)
+                .IsRequired();
         }
     }
 }

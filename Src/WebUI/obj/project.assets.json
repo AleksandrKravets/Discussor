@@ -2928,6 +2928,10 @@
       "Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity": "2.2.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.0"
+        },
         "compile": {
           "bin/placeholder/Domain.dll": {}
         },
@@ -2940,8 +2944,6 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "Application": "1.0.0",
-          "Microsoft.AspNetCore.Identity": "2.2.0",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.0"
         },
         "compile": {

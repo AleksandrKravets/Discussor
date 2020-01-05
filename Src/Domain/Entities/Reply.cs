@@ -12,5 +12,6 @@ namespace Domain.Entities
 
         public int PostId { get; set; }
         public virtual Post Post { get; set; }
+        public int CreatorId { get; set; }
     }
 }
