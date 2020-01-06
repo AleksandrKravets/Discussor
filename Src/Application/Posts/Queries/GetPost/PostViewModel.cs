@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Application.Common.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Application.Posts.Queries.GetPost
@@ -11,5 +12,6 @@ namespace Application.Posts.Queries.GetPost
         public DateTime DateOfCreation { get; set; }
         public int ThemeId { get; set; }
         public IEnumerable<ReplyDto> Replies { get; set; }
+        public UserDto Creator { get; set; }
     }
 }

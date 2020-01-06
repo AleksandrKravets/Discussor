@@ -1,5 +1,4 @@
-﻿using Domain.Identity;
-using Infrastructure.Contracts;
+﻿using Infrastructure.Contracts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,16 +6,16 @@ namespace WebUI.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
-        private readonly IEmailSender _emailSender;
+        //private readonly UserManager<User> _userManager;
+        //private readonly SignInManager<User> _signInManager;
+        //private readonly IEmailSender _emailSender;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IEmailSender emailSende)
-        {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _emailSender = emailSende;
-        }
+        //public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IEmailSender emailSende)
+        //{
+        //    _userManager = userManager;
+        //    _signInManager = signInManager;
+        //    _emailSender = emailSende;
+        //}
 
         //[HttpGet]
         //public IActionResult Register()

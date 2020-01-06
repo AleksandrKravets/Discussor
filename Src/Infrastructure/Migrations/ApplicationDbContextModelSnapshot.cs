@@ -113,7 +113,7 @@ namespace Infrastructure.Migrations
                     b.ToTable("Themes");
                 });
 
-            modelBuilder.Entity("Domain.Identity.User", b =>
+            modelBuilder.Entity("Infrastructure.Identity.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -317,7 +317,7 @@ namespace Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Identity.User", null)
+                    b.HasOne("Infrastructure.Identity.User", null)
                         .WithMany("Posts")
                         .HasForeignKey("UserId");
                 });
@@ -330,14 +330,14 @@ namespace Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Identity.User", null)
+                    b.HasOne("Infrastructure.Identity.User", null)
                         .WithMany("Replies")
                         .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Domain.Entities.Theme", b =>
                 {
-                    b.HasOne("Domain.Identity.User", null)
+                    b.HasOne("Infrastructure.Identity.User", null)
                         .WithMany("Themes")
                         .HasForeignKey("UserId");
                 });
@@ -353,7 +353,7 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Domain.Identity.User", null)
+                    b.HasOne("Infrastructure.Identity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -362,7 +362,7 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Domain.Identity.User", null)
+                    b.HasOne("Infrastructure.Identity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -377,7 +377,7 @@ namespace Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Identity.User", null)
+                    b.HasOne("Infrastructure.Identity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -386,7 +386,7 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Domain.Identity.User", null)
+                    b.HasOne("Infrastructure.Identity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

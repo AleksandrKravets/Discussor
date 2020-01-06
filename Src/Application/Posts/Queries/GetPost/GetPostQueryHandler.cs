@@ -35,6 +35,9 @@ namespace Application.Posts.Queries.GetPost
                 })
                 .ToListAsync();
 
+            
+            
+
             var result = new PostViewModel
             {
                 Id = post.Id,
@@ -42,7 +45,8 @@ namespace Application.Posts.Queries.GetPost
                 Content = post.Content,
                 DateOfCreation = post.DateOfCreation,
                 ThemeId = post.ThemeId,
-                Replies = replies
+                Replies = replies,
+                Creator = null
             };
 
             return result;

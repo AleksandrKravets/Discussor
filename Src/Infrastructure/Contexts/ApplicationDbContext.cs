@@ -1,6 +1,6 @@
 ﻿using Application.Common.Interfaces;
 using Domain.Entities;
-using Domain.Identity;
+using Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
@@ -10,6 +10,7 @@ namespace Infrastructure.Contexts
 {
     public class ApplicationDbContext : IdentityDbContext<User>, IApplicationDbContext
     {
+        public DbSet<User> Users { get; set; }
         public DbSet<Theme> Themes { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Reply> PostReplies { get; set; }
