@@ -5,12 +5,12 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
+using Infrastructure.Contracts;
 
 namespace Infrastructure.Contexts
 {
     public class ApplicationDbContext : IdentityDbContext<User>, IApplicationDbContext
     {
-        public DbSet<User> Users { get; set; }
         public DbSet<Theme> Themes { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Reply> PostReplies { get; set; }

@@ -1,4 +1,4 @@
-﻿using Application.Common.Interfaces;
+﻿using Infrastructure.Contracts;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;

@@ -12,11 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <Folder Include="Common\Interfaces\" />
+    <Folder Include="Themes\Commands\UpdateTheme\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Themes\Commands\UpdateTheme\" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

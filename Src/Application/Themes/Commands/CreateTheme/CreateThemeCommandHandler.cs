@@ -1,5 +1,5 @@
-﻿using Application.Common.Interfaces;
-using Domain.Entities;
+﻿using Domain.Entities;
+using Infrastructure.Contracts;
 using MediatR;
 using System;
 using System.Threading;

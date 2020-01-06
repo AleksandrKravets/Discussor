@@ -1,6 +1,6 @@
 ﻿using Application.Common.Exceptions;
-using Application.Common.Interfaces;
 using Domain.Entities;
+using Infrastructure.Contracts;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
