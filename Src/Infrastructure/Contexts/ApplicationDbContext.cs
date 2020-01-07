@@ -12,7 +12,6 @@ namespace Infrastructure.Contexts
         public DbSet<Theme> Themes { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Reply> PostReplies { get; set; }
-        public DbSet<User> Users { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
