@@ -8,8 +8,8 @@ namespace Discussor.Core.Application.Common.Contracts.Repositories
     {
         Task<int> Create(User user);
         Task<User> GetUserById(string userId);
-        Task<IEnumerable<User>> GetAllUsers();
-        Task Update(User user);
-        Task Delete(string userId);
+        IEnumerable<User> GetAllUsers();
+        Task<bool> Update(User user);
+        Task<bool> Delete(string userId);
     }
 }

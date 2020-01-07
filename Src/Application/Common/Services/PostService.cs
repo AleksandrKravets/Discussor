@@ -18,33 +18,34 @@ namespace Discussor.Core.Application.Common.Services
 
         public async Task<int> CreateAsync(Post post)
         {
-            return await _postRepository.CreateAsync(post);
+            return await _postRepository.Create(post);
         }
 
         public async Task<bool> DeleteAsync(int postId)
         {
-            return await _postRepository.DeleteAsync(postId);
+            return await _postRepository.Delete(postId);
         }
 
-        public async Task<IEnumerable<Post>> GetAllPostsAsync()
+        public IEnumerable<Post> GetAllPosts()
         {
-            return await _postRepository.GetAllPostsAsync();
+            return _postRepository.GetAllPosts().ToList();
         }
 
         public async Task<Post> GetPostByIdAsync(int postId)
         {
-            return await _postRepository.GetPostByIdAsync(postId);
+            return await _postRepository.GetPostById(postId);
         }
 
-        public async Task<IEnumerable<Post>> GetPostsByThemeIdAsync(int themeId)
+        public IEnumerable<Post> GetPostsByThemeId(int themeId)
         {
-            var posts = await _postRepository.GetAllPostsAsync();
-            return posts.Where(post => post.ThemeId == themeId).ToList();
+            return _postRepository.GetAllPosts()
+                            .Where(post => post.ThemeId == themeId)
+                            .ToList();
         }
 
         public async Task<bool> UpdateAsync(Post post)
         {
-            return await _postRepository.UpdateAsync(post);
+            return await _postRepository.Update(post);
         }
     }
 }

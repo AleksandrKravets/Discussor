@@ -1,6 +1,44 @@
-﻿namespace Discussor.Core.Application.Common.Services
+﻿using Discussor.Core.Application.Common.Contracts.Repositories;
+using Discussor.Core.Application.Common.Contracts.Services;
+using Discussor.Core.Domain.Entities;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Discussor.Core.Application.Common.Services
 {
-    public class ThemeService
+    public class ThemeService : IThemeService
     {
+        private readonly IThemeRepository _themeRepository;
+
+        public ThemeService(IThemeRepository themeRepository)
+        {
+            _themeRepository = themeRepository;
+        }
+
+        public async Task<int> CreateAsync(Theme theme)
+        {
+            return await _themeRepository.Create(theme);
+        }
+
+        public async Task<bool> DeleteAsync(int themeId)
+        {
+            return await _themeRepository.Delete(themeId);
+        }
+
+        public IEnumerable<Theme> GetAllThemes()
+        {
+            return _themeRepository.GetAllThemes().ToList();
+        }
+
+        public async Task<Theme> GetThemeByIdAsync(int themeId)
+        {
+            return await _themeRepository.GetThemeById(themeId);
+        }
+
+        public async Task<bool> UpdateAsync(Theme theme)
+        {
+            return await _themeRepository.Update(theme);
+        }
     }
 }

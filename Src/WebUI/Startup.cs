@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Infrastructure;
 using Application;
+using Discussor.Core.Application;
+using Discussor.Infrastructure;
 
 namespace WebUI
 {

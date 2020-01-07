@@ -6,10 +6,10 @@ namespace Discussor.Core.Application.Common.Contracts.Repositories
 {
     public interface IPostRepository
     {
-        Task<int> CreateAsync(Post post);
-        Task<Post> GetPostByIdAsync(int postId);
-        Task<IEnumerable<Post>> GetAllPostsAsync();
-        Task<bool> UpdateAsync(Post post);
-        Task<bool> DeleteAsync(int postId);
+        Task<int> Create(Post post);
+        Task<Post> GetPostById(int postId);
+        IEnumerable<Post> GetAllPosts();
+        Task<bool> Update(Post post);
+        Task<bool> Delete(int postId);
     }
 }

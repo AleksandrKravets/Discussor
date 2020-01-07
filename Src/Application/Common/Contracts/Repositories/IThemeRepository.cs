@@ -8,8 +8,8 @@ namespace Discussor.Core.Application.Common.Contracts.Repositories
     {
         Task<int> Create(Theme theme);
         Task<Theme> GetThemeById(int themeId);
-        Task<IEnumerable<Theme>> GetAllThemes();
-        Task Update(Theme theme);
-        Task Delete(int themeId);
+        IEnumerable<Theme> GetAllThemes();
+        Task<bool> Update(Theme theme);
+        Task<bool> Delete(int themeId);
     }
 }

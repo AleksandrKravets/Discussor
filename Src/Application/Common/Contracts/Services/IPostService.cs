@@ -8,9 +8,9 @@ namespace Discussor.Core.Application.Common.Contracts.Services
     {
         Task<int> CreateAsync(Post post);
         Task<Post> GetPostByIdAsync(int postId);
-        Task<IEnumerable<Post>> GetAllPostsAsync();
+        IEnumerable<Post> GetAllPosts();
         Task<bool> UpdateAsync(Post post);
         Task<bool> DeleteAsync(int postId);
-        Task<IEnumerable<Post>> GetPostsByThemeIdAsync(int themeId);
+        IEnumerable<Post> GetPostsByThemeId(int themeId);
     }
 }

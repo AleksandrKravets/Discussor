@@ -8,8 +8,8 @@ namespace Discussor.Core.Application.Common.Contracts.Repositories
     {
         Task<int> Create(Reply reply);
         Task<Reply> GetReplyById(int replyId);
-        Task<IEnumerable<Reply>> GetAllReplies();
-        Task Update(Reply reply);
-        Task Delete(int replyId);
+        IEnumerable<Reply> GetAllReplies();
+        Task<bool> Update(Reply reply);
+        Task<bool> Delete(int replyId);
     }
 }

@@ -16,14 +16,14 @@ namespace Discussor.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<int> CreateAsync(Post post)
+        public async Task<int> Create(Post post)
         {
             await _context.Posts.AddAsync(post);
             await _context.SaveChangesAsync();
             return post.Id;
         }
 
-        public async Task<bool> DeleteAsync(int postId)
+        public async Task<bool> Delete(int postId)
         {
             var post = await _context.Posts.FindAsync(postId);
 
@@ -36,27 +36,28 @@ namespace Discussor.Infrastructure.Repositories
             return true;
         }
 
-        public Task<IEnumerable<Post>> GetAllPostsAsync()
+        public IEnumerable<Post> GetAllPosts()
         {
-            return new Task<IEnumerable<Post>>(() => _context.Posts);
+            return _context.Posts;
         }
 
-        public async Task<Post> GetPostByIdAsync(int postId)
+        public async Task<Post> GetPostById(int postId)
         {
             return await _context.Posts.FindAsync(postId);
         }
 
-        public async Task<bool> UpdateAsync(Post post)
+        public async Task<bool> Update(Post post)
         {
             var postToUpdate = await _context.Posts.FindAsync(post.Id);
 
             if (postToUpdate == null)
                 return false;
 
+            postToUpdate.Title = post.Title;
             postToUpdate.Content = post.Content;
             postToUpdate.DateOfCreation = DateTime.Now;
-            postToUpdate.Title = post.Title;
-            postToUpdate.ThemeId = post.ThemeId;
+
+            await _context.SaveChangesAsync();
 
             return true;
         }

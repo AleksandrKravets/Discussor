@@ -1,5 +1,7 @@
-﻿using Discussor.Core.Application.Common.Interfaces;
+﻿using Discussor.Core.Application.Common.Contracts.Repositories;
 using Discussor.Core.Domain.Entities;
+using Discussor.Infrastructure.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -7,29 +9,56 @@ namespace Discussor.Infrastructure.Repositories
 {
     public class ReplyRepository : IReplyRepository
     {
-        public Task<int> Create(Reply reply)
+        private readonly IApplicationDbContext _context;
+
+        public ReplyRepository(IApplicationDbContext context)
         {
-            throw new System.NotImplementedException();
+            _context = context;
         }
 
-        public Task Delete(int replyId)
+        public async Task<int> Create(Reply reply)
         {
-            throw new System.NotImplementedException();
+            await _context.PostReplies.AddAsync(reply);
+            await _context.SaveChangesAsync();
+            return reply.Id;
         }
 
-        public Task<IEnumerable<Reply>> GetAllReplies()
+        public async Task<bool> Delete(int replyId)
         {
-            throw new System.NotImplementedException();
+            var reply = await _context.PostReplies.FindAsync(replyId);
+
+            if (reply == null)
+                return false;
+
+            _context.PostReplies.Remove(reply);
+            await _context.SaveChangesAsync();
+
+            return true;
         }
 
-        public Task<Reply> GetReplyById(int replyId)
+        public IEnumerable<Reply> GetAllReplies()
         {
-            throw new System.NotImplementedException();
+            return _context.PostReplies;
         }
 
-        public Task Update(Reply reply)
+        public async Task<Reply> GetReplyById(int replyId)
         {
-            throw new System.NotImplementedException();
+            return await _context.PostReplies.FindAsync(replyId);
+        }
+
+        public async Task<bool> Update(Reply reply)
+        {
+            var replyToUpdate = await _context.PostReplies.FindAsync(reply.Id);
+
+            if (replyToUpdate == null)
+                return false;
+
+            replyToUpdate.Content = reply.Content;
+            replyToUpdate.DateOfCreation = DateTime.Now;
+
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

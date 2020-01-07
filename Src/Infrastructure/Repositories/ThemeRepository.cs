@@ -1,5 +1,7 @@
-﻿using Discussor.Core.Application.Common.Interfaces;
+﻿using Discussor.Core.Application.Common.Contracts.Repositories;
 using Discussor.Core.Domain.Entities;
+using Discussor.Infrastructure.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -7,29 +9,56 @@ namespace Discussor.Infrastructure.Repositories
 {
     public class ThemeRepository : IThemeRepository
     {
-        public Task<int> Create(Theme theme)
+        private readonly IApplicationDbContext _context;
+
+        public ThemeRepository(IApplicationDbContext context)
         {
-            throw new System.NotImplementedException();
+            _context = context;
         }
 
-        public Task Delete(int themeId)
+        public async Task<int> Create(Theme theme)
         {
-            throw new System.NotImplementedException();
+            await _context.Themes.AddAsync(theme);
+            await _context.SaveChangesAsync();
+            return theme.Id;
         }
 
-        public Task<IEnumerable<Theme>> GetAllThemes()
+        public async Task<bool> Delete(int themeId)
         {
-            throw new System.NotImplementedException();
+            var theme = await _context.Themes.FindAsync(themeId);
+
+            if (theme == null)
+                return false;
+
+            _context.Themes.Remove(theme);
+            await _context.SaveChangesAsync();
+
+            return true;
         }
 
-        public Task<Theme> GetThemeById(int themeId)
+        public IEnumerable<Theme> GetAllThemes()
         {
-            throw new System.NotImplementedException();
+            return _context.Themes;
         }
 
-        public Task Update(Theme theme)
+        public async Task<Theme> GetThemeById(int themeId)
         {
-            throw new System.NotImplementedException();
+            return await _context.Themes.FindAsync(themeId);
+        }
+
+        public async Task<bool> Update(Theme theme)
+        {
+            var themeToUpdate = await _context.Themes.FindAsync(theme.Id);
+
+            if (themeToUpdate == null)
+                return false;
+
+            themeToUpdate.Title = theme.Title;
+            themeToUpdate.DateOfCreation = DateTime.Now;
+
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

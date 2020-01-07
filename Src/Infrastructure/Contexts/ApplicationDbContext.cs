@@ -30,9 +30,9 @@ namespace Infrastructure.Contexts
             base.OnModelCreating(builder);
         }
 
-        public Task<int> SaveChangesAsync()
+        public async Task<int> SaveChangesAsync()
         {
-            throw new System.NotImplementedException();
+            return await base.SaveChangesAsync();
         }
     }
 }
