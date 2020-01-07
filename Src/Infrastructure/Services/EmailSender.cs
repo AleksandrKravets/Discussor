@@ -1,11 +1,11 @@
-﻿using Infrastructure.Contracts;
+﻿using Discussor.Infrastructure.Contracts;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Services
+namespace DiscussorInfrastructure.Services
 {
-    public class EmailSender : IEmailSender
+    internal class EmailSender : IEmailSender
     {
         private string host;
         private int port;

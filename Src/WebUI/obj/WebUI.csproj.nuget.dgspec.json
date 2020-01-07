@@ -4,12 +4,12 @@
     "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\WebUI\\WebUI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Application\\Application.csproj": {
+    "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Application\\Discussor.Core.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Application\\Application.csproj",
-        "projectName": "Application",
-        "projectPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Application\\Discussor.Core.Application.csproj",
+        "projectName": "Discussor.Core.Application",
+        "projectPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Application\\Discussor.Core.Application.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Application\\obj\\",
         "projectStyle": "PackageReference",
@@ -32,8 +32,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Domain\\Discussor.Core.Domain.csproj": {
+                "projectPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Domain\\Discussor.Core.Domain.csproj"
               }
             }
           }
@@ -58,10 +58,6 @@
             "MediatR.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[8.0.0, )"
-            },
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[3.1.0, )"
             }
           },
           "imports": [
@@ -86,12 +82,12 @@
         }
       }
     },
-    "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Domain\\Domain.csproj": {
+    "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Domain\\Discussor.Core.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Domain\\Domain.csproj",
-        "projectName": "Domain",
-        "projectPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Domain\\Discussor.Core.Domain.csproj",
+        "projectName": "Discussor.Core.Domain",
+        "projectPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Domain\\Discussor.Core.Domain.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Domain\\obj\\",
         "projectStyle": "PackageReference",
@@ -153,12 +149,12 @@
         }
       }
     },
-    "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Infrastructure\\Discussor.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Infrastructure\\Infrastructure.csproj",
-        "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Infrastructure\\Discussor.Infrastructure.csproj",
+        "projectName": "Discussor.Infrastructure",
+        "projectPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Infrastructure\\Discussor.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
@@ -181,8 +177,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Domain\\Domain.csproj"
+              "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Application\\Discussor.Core.Application.csproj": {
+                "projectPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Application\\Discussor.Core.Application.csproj"
+              },
+              "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Domain\\Discussor.Core.Domain.csproj": {
+                "projectPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Domain\\Discussor.Core.Domain.csproj"
               }
             }
           }
@@ -196,6 +195,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.1.0, )"
@@ -212,6 +215,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
@@ -248,8 +254,14 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Application\\Application.csproj"
+              "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Application\\Discussor.Core.Application.csproj": {
+                "projectPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Application\\Discussor.Core.Application.csproj"
+              },
+              "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Domain\\Discussor.Core.Domain.csproj": {
+                "projectPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Domain\\Discussor.Core.Domain.csproj"
+              },
+              "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Infrastructure\\Discussor.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Infrastructure\\Discussor.Infrastructure.csproj"
               }
             }
           }

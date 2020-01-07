@@ -1,4 +1,5 @@
 ﻿using Application.Common.Exceptions;
+using Application.Common.Models;
 using Domain.Entities;
 using Infrastructure.Contracts;
 using MediatR;
@@ -33,7 +34,9 @@ namespace Application.Posts.Queries.GetPostsList
                     Title = post.Title,
                     Content = post.Content,
                     DateOfCreation = post.DateOfCreation,
-                    ThemeId = post.ThemeId
+                    ThemeId = post.ThemeId,
+                    Creator = () => { return new UserDto() },
+                    Creator = _context.Users.Find(post.UserId)
                 }).ToListAsync();
 
             var result = new PostsListViewModel

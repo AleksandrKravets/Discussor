@@ -1,5 +1,8 @@
 ﻿using Application.Common.Exceptions;
+using Application.Common.Models;
 using Domain.Entities;
+using Infrastructure.Contracts;
+using Infrastructure.Identity;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -24,6 +27,11 @@ namespace Application.Posts.Queries.GetPost
             if (post == null)
                 throw new NotFoundException(nameof(Post), request.PostId);
 
+            var user = _context.Users.Find(post.UserId);
+
+            if (user == null)
+                throw new NotFoundException(nameof(User), post.UserId);
+
             var replies = await _context.PostReplies
                 .Where(reply => reply.PostId == request.PostId)
                 .Select(reply => new ReplyDto
@@ -34,8 +42,12 @@ namespace Application.Posts.Queries.GetPost
                 })
                 .ToListAsync();
 
-            
-            
+
+            var creator = new UserDto 
+            {
+                UserId = user.Id,
+                Username = user.UserName
+            };
 
             var result = new PostViewModel
             {
@@ -45,7 +57,7 @@ namespace Application.Posts.Queries.GetPost
                 DateOfCreation = post.DateOfCreation,
                 ThemeId = post.ThemeId,
                 Replies = replies,
-                Creator = null
+                Creator = creator
             };
 
             return result;

@@ -1,7 +1,7 @@
-﻿using Domain.Common;
+﻿using Discussor.Core.Domain.Common;
 using System;
 
-namespace Domain.Entities
+namespace Discussor.Core.Domain.Entities
 {
     public class Reply : StoredEntity
     {

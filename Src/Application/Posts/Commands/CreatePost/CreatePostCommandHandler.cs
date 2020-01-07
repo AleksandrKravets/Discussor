@@ -1,16 +1,13 @@
-﻿using Application.Common.Exceptions;
-using Domain.Entities;
-using Infrastructure.Contracts;
-using MediatR;
+﻿using MediatR;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Posts.Commands.CreatePost
+namespace Discussor.Core.Application.Posts.Commands.CreatePost
 {
     public class CreatePostCommandHandler : IRequestHandler<CreatePostCommand, int>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IPostRepository _context;
 
         public CreatePostCommandHandler(IApplicationDbContext context)
         {

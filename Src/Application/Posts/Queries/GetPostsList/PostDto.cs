@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Application.Common.Models;
+using System;
 
 namespace Application.Posts.Queries.GetPostsList
 {
@@ -9,5 +10,6 @@ namespace Application.Posts.Queries.GetPostsList
         public string Content { get; set; }
         public DateTime DateOfCreation { get; set; }
         public int ThemeId { get; set; }
+        public UserDto Creator { get; set; }
     }
 }

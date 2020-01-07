@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace Infrastructure.Contracts
+namespace Discussor.Infrastructure.Contracts
 {
     public interface IImageConverter
     {

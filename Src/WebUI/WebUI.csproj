@@ -21,7 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Application\Discussor.Core.Application.csproj" />
+    <ProjectReference Include="..\Domain\Discussor.Core.Domain.csproj" />
+    <ProjectReference Include="..\Infrastructure\Discussor.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

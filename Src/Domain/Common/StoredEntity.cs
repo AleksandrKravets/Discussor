@@ -1,4 +1,4 @@
-﻿namespace Domain.Common
+﻿namespace Discussor.Core.Domain.Common
 {
     public abstract class StoredEntity
     {

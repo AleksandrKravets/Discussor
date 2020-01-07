@@ -1790,9 +1790,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Domain\\Domain.csproj",
-      "projectName": "Domain",
-      "projectPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Domain\\Discussor.Core.Domain.csproj",
+      "projectName": "Discussor.Core.Domain",
+      "projectPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Domain\\Discussor.Core.Domain.csproj",
       "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Acer\\source\\repos\\Kravets.AspNetCore.Discussor\\Src\\Domain\\obj\\",
       "projectStyle": "PackageReference",

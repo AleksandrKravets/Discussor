@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Infrastructure.Contracts
+namespace Discussor.Infrastructure.Contracts
 {
     public interface IEmailSender
     {

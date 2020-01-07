@@ -1,10 +1,10 @@
-﻿using Domain.Entities;
+﻿using Discussor.Core.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure.Configurations
+namespace Discussor.Infrastructure.Configurations
 {
-    public class ReplyConfiguration : IEntityTypeConfiguration<Reply>
+    internal class ReplyConfiguration : IEntityTypeConfiguration<Reply>
     {
         public void Configure(EntityTypeBuilder<Reply> builder)
         {

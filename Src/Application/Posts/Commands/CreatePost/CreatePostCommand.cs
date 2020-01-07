@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.Posts.Commands.CreatePost
+namespace Discussor.Core.Application.Posts.Commands.CreatePost
 {
     public class CreatePostCommand : IRequest<int>
     {

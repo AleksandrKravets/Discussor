@@ -1,9 +1,9 @@
-﻿using Application.Common.Behaviours;
+﻿using Discussor.Core.Application.Common.Behaviours;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace Application
+namespace Discussor.Core.Application
 {
     public static class DependencyInjection
     {

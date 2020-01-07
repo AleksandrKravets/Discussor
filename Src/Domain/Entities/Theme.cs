@@ -1,8 +1,8 @@
-﻿using Domain.Common;
+﻿using Discussor.Core.Domain.Common;
 using System;
 using System.Collections.Generic;
 
-namespace Domain.Entities
+namespace Discussor.Core.Domain.Entities
 {
     public class Theme : StoredEntity
     {

@@ -1,15 +1,15 @@
-﻿using Application.Common.Interfaces;
+﻿using Discussor.Infrastructure.Contracts;
+using Discussor.Infrastructure.Identity;
+using Discussor.Infrastructure.Services;
+using DiscussorInfrastructure.Services;
 using Infrastructure.Contexts;
-using Infrastructure.Contracts;
-using Infrastructure.Identity;
-using Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace Infrastructure
+namespace Discussor.Infrastructure
 {
     public static class DependencyInjection
     {
@@ -18,10 +18,10 @@ namespace Infrastructure
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DiscussorDatabase")));
 
-            services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
+           // services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
 
 
-            services.AddIdentity<User, IdentityRole>(options => {
+            services.AddIdentity<UserIdentity, IdentityRole>(options => {
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;

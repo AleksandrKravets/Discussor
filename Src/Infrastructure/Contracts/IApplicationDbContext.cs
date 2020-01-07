@@ -1,10 +1,9 @@
-﻿using Domain.Entities;
-using Infrastructure.Identity;
+﻿using Discussor.Core.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Contracts
+namespace Discussor.Infrastructure.Contracts
 {
     public interface IApplicationDbContext
     {
@@ -12,7 +11,6 @@ namespace Infrastructure.Contracts
         public DbSet<Post> Posts { get; set; }
         public DbSet<Reply> PostReplies { get; set; }
         public DbSet<User> Users { get; set; }
-
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        Task<int> SaveChangesAsync();
     }
 }

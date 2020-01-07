@@ -1,10 +1,10 @@
-﻿using Infrastructure.Contracts;
+﻿using Discussor.Infrastructure.Contracts;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 
-namespace Infrastructure.Services
+namespace Discussor.Infrastructure.Services
 {
-    public class ImageConverter : IImageConverter
+    internal class ImageConverter : IImageConverter
     {
         public byte[] ConvertToByteArray(IFormFile image)
         {
