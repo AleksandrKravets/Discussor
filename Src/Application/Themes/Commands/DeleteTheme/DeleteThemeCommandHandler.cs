@@ -1,33 +1,22 @@
-﻿using Application.Common.Exceptions;
-using Domain.Entities;
-using Infrastructure.Contracts;
+﻿using Discussor.Core.Application.Common.Contracts.Services;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Application.Themes.Commands.DeleteTheme
 {
-    public class DeleteThemeCommandHandler : IRequestHandler<DeleteThemeCommand>
+    public class DeleteThemeCommandHandler : IRequestHandler<DeleteThemeCommand, bool>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IThemeService _themeService;
 
-        public DeleteThemeCommandHandler(IApplicationDbContext context)
+        public DeleteThemeCommandHandler(IThemeService themeService)
         {
-            _context = context;
+            _themeService = themeService;
         }
 
-        public async Task<Unit> Handle(DeleteThemeCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(DeleteThemeCommand request, CancellationToken cancellationToken)
         {
-            var theme = await _context.Themes.FindAsync(request.ThemeId);
-
-            if (theme == null)
-                throw new NotFoundException(nameof(Theme), request.ThemeId);
-
-            _context.Themes.Remove(theme);
-
-            await _context.SaveChangesAsync(cancellationToken);
-
-            return Unit.Value;
+            return await _themeService.DeleteAsync(request.ThemeId);
         }
     }
 }

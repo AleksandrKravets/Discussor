@@ -1,33 +1,22 @@
-﻿using Application.Common.Exceptions;
-using Domain.Entities;
-using Infrastructure.Contracts;
+﻿using Discussor.Core.Application.Common.Contracts.Services;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Application.Replies.Commands.DeleteReply
 {
-    public class DeleteReplyCommandHandler : IRequestHandler<DeleteReplyCommand>
+    public class DeleteReplyCommandHandler : IRequestHandler<DeleteReplyCommand, bool>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IReplyService _replyService;
 
-        public DeleteReplyCommandHandler(IApplicationDbContext context)
+        public DeleteReplyCommandHandler(IReplyService replyService)
         {
-            _context = context;
+            _replyService = replyService;
         }
 
-        public async Task<Unit> Handle(DeleteReplyCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(DeleteReplyCommand request, CancellationToken cancellationToken)
         {
-            var reply = await _context.PostReplies.FindAsync(request.ReplyId);
-
-            if (reply == null)
-                throw new NotFoundException(nameof(Reply), request.ReplyId);
-
-            _context.PostReplies.Remove(reply);
-
-            await _context.SaveChangesAsync(cancellationToken);
-
-            return Unit.Value;
+            return await _replyService.DeleteAsync(request.ReplyId);
         }
     }
 }

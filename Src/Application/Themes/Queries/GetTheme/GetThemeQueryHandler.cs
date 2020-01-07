@@ -1,6 +1,6 @@
-﻿using Application.Common.Exceptions;
-using Domain.Entities;
-using Infrastructure.Contracts;
+﻿using Discussor.Core.Application.Common.Contracts.Services;
+using Discussor.Core.Application.Common.Exceptions;
+using Discussor.Core.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
@@ -10,19 +10,19 @@ namespace Application.Themes.Queries.GetTheme
 {
     public class GetThemeQueryHandler : IRequestHandler<GetThemeQuery, ThemeViewModel>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IThemeService _themeService;
 
-        public GetThemeQueryHandler(IApplicationDbContext context)
+        public GetThemeQueryHandler(IThemeService themeService)
         {
-            _context = context;
+            _themeService = themeService;
         }
 
         public async Task<ThemeViewModel> Handle(GetThemeQuery request, CancellationToken cancellationToken)
         {
-            var theme = await _context.Themes.FirstOrDefaultAsync(theme => theme.Id == request.Id);
+            var theme = await _themeService.GetThemeByIdAsync(request.ThemeId);
 
             if (theme == null)
-                throw new NotFoundException(nameof(Theme), request.Id);
+                throw new NotFoundException(nameof(Theme), request.ThemeId);
 
             var result = new ThemeViewModel
             {

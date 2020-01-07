@@ -1,6 +1,5 @@
-﻿using Application.Common.Exceptions;
-using Domain.Entities;
-using Infrastructure.Contracts;
+﻿using Discussor.Core.Application.Common.Contracts.Services;
+using Discussor.Core.Domain.Entities;
 using MediatR;
 using System;
 using System.Threading;
@@ -8,28 +7,26 @@ using System.Threading.Tasks;
 
 namespace Application.Replies.Commands.UpdateReply
 {
-    public class UpdateReplyCommandHandler : IRequestHandler<UpdateReplyCommand>
+    public class UpdateReplyCommandHandler : IRequestHandler<UpdateReplyCommand, bool>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IReplyService _replyService;
 
-        public UpdateReplyCommandHandler(IApplicationDbContext context)
+        public UpdateReplyCommandHandler(IReplyService replyService)
         {
-            _context = context;
+            _replyService = replyService;
         }
 
-        public async Task<Unit> Handle(UpdateReplyCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(UpdateReplyCommand request, CancellationToken cancellationToken)
         {
-            var reply = await _context.PostReplies.FindAsync(request.ReplyId);
+            var reply = new Reply
+            {
+                Id = request.ReplyId,
+                Content = request.Content,
+                DateOfCreation = DateTime.Now,
+                PostId = request.PostId
+            };
 
-            if (reply == null)
-                throw new NotFoundException(nameof(Reply), request.ReplyId);
-
-            reply.Content = request.Content;
-            reply.DateOfCreation = DateTime.Now;
-
-            await _context.SaveChangesAsync(cancellationToken);
-
-            return Unit.Value;
+            return await _replyService.UpdateAsync(reply);
         }
     }
 }

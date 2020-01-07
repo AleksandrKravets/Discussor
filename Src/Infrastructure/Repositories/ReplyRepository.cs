@@ -55,6 +55,7 @@ namespace Discussor.Infrastructure.Repositories
 
             replyToUpdate.Content = reply.Content;
             replyToUpdate.DateOfCreation = DateTime.Now;
+            replyToUpdate.PostId = reply.PostId;
 
             await _context.SaveChangesAsync();
 

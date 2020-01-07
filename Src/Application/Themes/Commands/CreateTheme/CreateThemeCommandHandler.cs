@@ -1,5 +1,5 @@
-﻿using Domain.Entities;
-using Infrastructure.Contracts;
+﻿using Discussor.Core.Application.Common.Contracts.Services;
+using Discussor.Core.Domain.Entities;
 using MediatR;
 using System;
 using System.Threading;
@@ -9,11 +9,11 @@ namespace Application.Themes.Commands.CreateTheme
 {
     public class CreateThemeCommandHandler : IRequestHandler<CreateThemeCommand, int>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IThemeService _themeService;
 
-        public CreateThemeCommandHandler(IApplicationDbContext context)
+        public CreateThemeCommandHandler(IThemeService themeService)
         {
-            _context = context;
+            _themeService = themeService;
         }
 
         public async Task<int> Handle(CreateThemeCommand request, CancellationToken cancellationToken)
@@ -25,11 +25,7 @@ namespace Application.Themes.Commands.CreateTheme
                 DateOfCreation = DateTime.Now
             };
 
-            await _context.Themes.AddAsync(theme);
-
-            await _context.SaveChangesAsync(cancellationToken);
-
-            return theme.Id;
+            return await _themeService.CreateAsync(theme);
         }
     }
 }

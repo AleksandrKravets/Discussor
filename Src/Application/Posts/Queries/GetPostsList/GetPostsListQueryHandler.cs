@@ -1,7 +1,6 @@
-﻿using Application.Common.Exceptions;
-using Application.Common.Models;
-using Domain.Entities;
-using Infrastructure.Contracts;
+﻿using Discussor.Core.Application.Common.Contracts.Services;
+using Discussor.Core.Application.Common.Exceptions;
+using Discussor.Core.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -12,21 +11,23 @@ namespace Application.Posts.Queries.GetPostsList
 {
     public class GetPostsListQueryHandler : IRequestHandler<GetPostsListQuery, PostsListViewModel>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IPostService _postService;
+        private readonly IThemeService _themeService;
 
-        public GetPostsListQueryHandler(IApplicationDbContext context)
+        public GetPostsListQueryHandler(IPostService postService, IThemeService themeService)
         {
-            _context = context;
+            _postService = postService;
+            _themeService = themeService;
         }
 
         public async Task<PostsListViewModel> Handle(GetPostsListQuery request, CancellationToken cancellationToken)
         {
-            var theme = await _context.Themes.FindAsync(request.ThemeId);
+            var theme = await _themeService.GetThemeByIdAsync(request.ThemeId);
 
             if (theme == null)
                 throw new NotFoundException(nameof(Theme), request.ThemeId);
 
-            var posts = await _context.Posts
+            var posts = _postService.GetPostsByThemeId(request.ThemeId)
                 .Where(post => post.ThemeId == request.ThemeId)
                 .Select(post => new PostDto
                 {
@@ -35,9 +36,7 @@ namespace Application.Posts.Queries.GetPostsList
                     Content = post.Content,
                     DateOfCreation = post.DateOfCreation,
                     ThemeId = post.ThemeId,
-                    Creator = () => { return new UserDto() },
-                    Creator = _context.Users.Find(post.UserId)
-                }).ToListAsync();
+                }).ToList();
 
             var result = new PostsListViewModel
             {

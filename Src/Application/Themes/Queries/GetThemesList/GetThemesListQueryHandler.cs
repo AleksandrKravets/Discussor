@@ -1,6 +1,5 @@
-﻿using Infrastructure.Contracts;
+﻿using Discussor.Core.Application.Common.Contracts.Services;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,16 +8,16 @@ namespace Application.Themes.Queries.GetThemesList
 {
     public class GetThemesListQueryHandler : IRequestHandler<GetThemesListQuery, ThemesListViewModel>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IThemeService _themeService;
 
-        public GetThemesListQueryHandler(IApplicationDbContext context)
+        public GetThemesListQueryHandler(IThemeService themeService)
         {
-            _context = context;
+            _themeService = themeService;
         }
 
         public async Task<ThemesListViewModel> Handle(GetThemesListQuery request, CancellationToken cancellationToken)
         {
-            var themes = await _context.Themes
+            var themes = _themeService.GetAllThemes()
                 .Select(theme => new ThemeDto
                 {
                     Id = theme.Id,
@@ -26,7 +25,7 @@ namespace Application.Themes.Queries.GetThemesList
                     DateOfCreation = theme.DateOfCreation,
                     Image = theme.Image,
                     PostsNumber = theme.Posts.Count()
-                }).ToListAsync();
+                }).ToList();
 
             var themesList = new ThemesListViewModel
             {

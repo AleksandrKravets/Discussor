@@ -1,6 +1,6 @@
-﻿using Application.Common.Exceptions;
-using Domain.Entities;
-using Infrastructure.Contracts;
+﻿using Discussor.Core.Application.Common.Contracts.Services;
+using Discussor.Core.Application.Common.Exceptions;
+using Discussor.Core.Domain.Entities;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,17 +9,16 @@ namespace Application.Replies.Queries.GetReply
 {
     public class GetReplyQueryHandler : IRequestHandler<GetReplyQuery, ReplyViewModel>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IReplyService _replyService;
 
-        public GetReplyQueryHandler(IApplicationDbContext context)
+        public GetReplyQueryHandler(IReplyService replyService)
         {
-            _context = context;
+            _replyService = replyService;
         }
 
         public async Task<ReplyViewModel> Handle(GetReplyQuery request, CancellationToken cancellationToken)
         {
-            // request.PostId == reply.PostId
-            var reply = await _context.PostReplies.FindAsync(request.ReplyId);
+            var reply = await _replyService.GetReplyByIdAsync(request.ReplyId);
 
             if (reply == null)
                 throw new NotFoundException(nameof(Reply), request.ReplyId);

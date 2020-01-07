@@ -1,33 +1,24 @@
-﻿using Application.Common.Exceptions;
-using Domain.Entities;
-using Infrastructure.Contracts;
+﻿using Discussor.Core.Application.Common.Contracts.Services;
+using Discussor.Core.Application.Common.Exceptions;
+using Discussor.Core.Domain.Entities;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Application.Posts.Commands.DeletePost
 {
-    public class DeletePostCommandHandler : IRequestHandler<DeletePostCommand>
+    public class DeletePostCommandHandler : IRequestHandler<DeletePostCommand, bool>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IPostService _postService;
 
-        public DeletePostCommandHandler(IApplicationDbContext context)
+        public DeletePostCommandHandler(IPostService postService)
         {
-            _context = context;
+            _postService = postService;
         }
-
-        public async Task<Unit> Handle(DeletePostCommand request, CancellationToken cancellationToken)
+        
+        public async Task<bool> Handle(DeletePostCommand request, CancellationToken cancellationToken)
         {
-            var post = await _context.Posts.FindAsync(request.PostId);
-
-            if (post == null)
-                throw new NotFoundException(nameof(Post), request.PostId);
-
-            _context.Posts.Remove(post);
-
-            await _context.SaveChangesAsync(cancellationToken);
-
-            return Unit.Value;
+            return await _postService.DeleteAsync(request.PostId);
         }
     }
 }

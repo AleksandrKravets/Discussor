@@ -1,6 +1,6 @@
-﻿using Application.Common.Exceptions;
-using Domain.Entities;
-using Infrastructure.Contracts;
+﻿using Discussor.Core.Application.Common.Contracts.Services;
+using Discussor.Core.Application.Common.Exceptions;
+using Discussor.Core.Domain.Entities;
 using MediatR;
 using System;
 using System.Threading;
@@ -10,16 +10,18 @@ namespace Application.Replies.Commands.CreateReply
 {
     public class CreateReplyCommandHandler : IRequestHandler<CreateReplyCommand, int>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IPostService _postService;
+        private readonly IReplyService _replyService;
 
-        public CreateReplyCommandHandler(IApplicationDbContext context)
+        public CreateReplyCommandHandler(IPostService postService, IReplyService replyService)
         {
-            _context = context;
+            _postService = postService;
+            _replyService = replyService;
         }
 
         public async Task<int> Handle(CreateReplyCommand request, CancellationToken cancellationToken)
         {
-            var post = _context.Posts.FindAsync(request.PostId);
+            var post = await _postService.GetPostByIdAsync(request.PostId);
 
             if (post == null)
                 throw new NotFoundException(nameof(Post), request.PostId);
@@ -31,11 +33,7 @@ namespace Application.Replies.Commands.CreateReply
                 DateOfCreation = DateTime.Now
             };
 
-            await _context.PostReplies.AddAsync(reply);
-
-            await _context.SaveChangesAsync(cancellationToken);
-
-            return reply.Id;
+            return await _replyService.CreateAsync(reply);
         }
     }
 }

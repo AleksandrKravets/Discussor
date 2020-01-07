@@ -1,6 +1,5 @@
-﻿using Application.Common.Exceptions;
-using Domain.Entities;
-using Infrastructure.Contracts;
+﻿using Discussor.Core.Application.Common.Contracts.Services;
+using Discussor.Core.Domain.Entities;
 using MediatR;
 using System;
 using System.Threading;
@@ -8,29 +7,26 @@ using System.Threading.Tasks;
 
 namespace Application.Posts.Commands.UpdatePost
 {
-    public class UpdatePostCommandHandler : IRequestHandler<UpdatePostCommand>
+    public class UpdatePostCommandHandler : IRequestHandler<UpdatePostCommand, bool>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IPostService _postService;
 
-        public UpdatePostCommandHandler(IApplicationDbContext context)
+        public UpdatePostCommandHandler(IPostService postService)
         {
-            _context = context;
+            _postService = postService;
         }
 
-        public async Task<Unit> Handle(UpdatePostCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(UpdatePostCommand request, CancellationToken cancellationToken)
         {
-            var post = await _context.Posts.FindAsync(request.PostId);
-
-            if (post == null)
-                throw new NotFoundException(nameof(Post), request.PostId);
-
-            post.Title = request.Title;
-            post.Content = request.Content;
-            post.DateOfCreation = DateTime.Now;
-
-            await _context.SaveChangesAsync(cancellationToken);
-
-            return Unit.Value;
+            var post = new Post
+            {
+                Id = request.PostId,
+                Content = request.Content,
+                Title = request.Title,
+                ThemeId = request.ThemeId
+            }; 
+            
+            return await _postService.UpdateAsync(post);
         }
     }
 }
