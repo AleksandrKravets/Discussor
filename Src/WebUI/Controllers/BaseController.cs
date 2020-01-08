@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace WebUI.Controllers
+namespace Discussor.WebUI.Controllers
 {
     public class BaseController : Controller
     {

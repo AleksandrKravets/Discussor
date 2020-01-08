@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Contexts
 {
-    internal class ApplicationDbContext : IdentityDbContext<UserIdentity>, IApplicationDbContext
+    internal class ApplicationDbContext : IdentityDbContext<Discussor.Infrastructure.Identity.User>, IApplicationDbContext
     {
         public DbSet<Theme> Themes { get; set; }
         public DbSet<Post> Posts { get; set; }

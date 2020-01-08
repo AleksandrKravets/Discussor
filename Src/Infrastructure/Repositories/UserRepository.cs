@@ -2,6 +2,7 @@
 using Discussor.Core.Domain.Entities;
 using Discussor.Infrastructure.Contracts;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Discussor.Infrastructure.Repositories
@@ -15,29 +16,65 @@ namespace Discussor.Infrastructure.Repositories
             _context = context;
         }
 
-        public Task<int> Create(User user)
+        public async Task<string> Create(User user)
         {
-            throw new System.NotImplementedException();
+            var newUser = new Identity.User
+            {
+                UserName = user.Username
+            };
+
+            await _context.Users.AddAsync(newUser);
+            await _context.SaveChangesAsync();
+
+            return newUser.Id;
         }
 
-        public Task<bool> Delete(string userId)
+        public async Task<bool> Delete(string userId)
         {
-            throw new System.NotImplementedException();
+            var user = await _context.Users.FindAsync(userId);
+
+            if (user == null)
+                return false;
+
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+
+            return true;
         }
 
         public IEnumerable<User> GetAllUsers()
         {
-            throw new System.NotImplementedException();
+            return _context.Users
+                .Select(user => new Core.Domain.Entities.User
+                {
+                    Id = user.Id,
+                    Username = user.UserName
+                });
         }
 
-        public Task<User> GetUserById(string userId)
+        public async Task<User> GetUserById(string userId)
         {
-            throw new System.NotImplementedException();
+            var user = await _context.Users.FindAsync(userId);
+
+            return new Core.Domain.Entities.User
+            {
+                Id = user.Id,
+                Username = user.UserName
+            };
         }
 
-        public Task<bool> Update(User user)
+        public async Task<bool> Update(User user)
         {
-            throw new System.NotImplementedException();
+            var userToUpdate = await _context.Users.FindAsync(user.Id);
+
+            if (userToUpdate == null)
+                return false;
+
+            userToUpdate.UserName = user.Username;
+
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

@@ -1,12 +1,13 @@
-﻿using Application.Posts.Commands.DeletePost;
-using Application.Posts.Commands.UpdatePost;
-using Application.Posts.Queries.GetPost;
-using Application.Posts.Queries.GetPostsList;
+﻿using Discussor.Core.Application.Posts.Commands.CreatePost;
+using Discussor.Core.Application.Posts.Commands.DeletePost;
+using Discussor.Core.Application.Posts.Commands.UpdatePost;
+using Discussor.Core.Application.Posts.Queries.GetPost;
+using Discussor.Core.Application.Posts.Queries.GetPostsList;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace WebUI.Controllers
+namespace Discussor.WebUI.Controllers
 {
     public class PostController : BaseController
     {

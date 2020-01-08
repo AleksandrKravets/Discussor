@@ -1,11 +1,11 @@
-﻿using Application.Replies.Commands.CreateReply;
-using Application.Replies.Commands.DeleteReply;
-using Application.Replies.Commands.UpdateReply;
-using Application.Replies.Queries.GetReply;
+﻿using Discussor.Core.Application.Replies.Commands.CreateReply;
+using Discussor.Core.Application.Replies.Commands.DeleteReply;
+using Discussor.Core.Application.Replies.Commands.UpdateReply;
+using Discussor.Core.Application.Replies.Queries.GetReply;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace WebUI.Controllers
+namespace Discussor.WebUI.Controllers
 {
     public class ReplyController : BaseController
     {

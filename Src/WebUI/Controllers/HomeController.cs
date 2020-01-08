@@ -1,8 +1,8 @@
-﻿using Application.Themes.Queries.GetThemesList;
+﻿using Discussor.Core.Application.Themes.Queries.GetThemesList;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace WebUI.Controllers
+namespace Discussor.WebUI.Controllers
 {
     public class HomeController : BaseController
     {

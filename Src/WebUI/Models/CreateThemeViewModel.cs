@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace WebUI.Models
+namespace Discussor.WebUI.Models
 {
     public class CreateThemeViewModel
     {

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace WebUI
+namespace Discussor.WebUI
 {
     public class Program
     {

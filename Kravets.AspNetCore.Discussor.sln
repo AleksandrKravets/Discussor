@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discussor.Core.Domain", "Sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discussor.Infrastructure", "Src\Infrastructure\Discussor.Infrastructure.csproj", "{B68EA642-6EF2-4800-8996-F656C6FB193E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI", "Src\WebUI\WebUI.csproj", "{8C54BE43-18A6-4B09-BE6B-DF8AAEB93D9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discussor.WebUI", "Src\WebUI\Discussor.WebUI.csproj", "{8C54BE43-18A6-4B09-BE6B-DF8AAEB93D9F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "Tests\UnitTests\UnitTests.csproj", "{BEC8D27B-1D3E-48B8-B179-165EC80ED7EA}"
 EndProject

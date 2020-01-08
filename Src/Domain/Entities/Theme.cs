@@ -12,5 +12,6 @@ namespace Discussor.Core.Domain.Entities
 
         public virtual IEnumerable<Post> Posts { get; set; }
         public string UserId { get; set; }
+        //public User User { get; set; }
     }
 }

@@ -1,0 +1,11 @@
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\Application\bin\Debug\netcoreapp3.1\Discussor.Core.Application.deps.json
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\Application\bin\Debug\netcoreapp3.1\Discussor.Core.Application.dll
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\Application\bin\Debug\netcoreapp3.1\Discussor.Core.Application.pdb
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\Application\bin\Debug\netcoreapp3.1\Discussor.Core.Domain.dll
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\Application\bin\Debug\netcoreapp3.1\Discussor.Core.Domain.pdb
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\Application\obj\Debug\netcoreapp3.1\Discussor.Core.Application.csprojAssemblyReference.cache
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\Application\obj\Debug\netcoreapp3.1\Discussor.Core.Application.AssemblyInfoInputs.cache
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\Application\obj\Debug\netcoreapp3.1\Discussor.Core.Application.AssemblyInfo.cs
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\Application\obj\Debug\netcoreapp3.1\Discussor.Core.Application.csproj.CopyComplete
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\Application\obj\Debug\netcoreapp3.1\Discussor.Core.Application.dll
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\Application\obj\Debug\netcoreapp3.1\Discussor.Core.Application.pdb

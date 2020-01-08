@@ -27,7 +27,7 @@ namespace Discussor.Infrastructure
 
             services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
 
-            services.AddIdentity<UserIdentity, IdentityRole>(options => {
+            services.AddIdentity<User, IdentityRole>(options => {
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;

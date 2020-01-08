@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Discussor.Core.Domain.Entities
+﻿namespace Discussor.Core.Domain.Entities
 {
     public class User
     {

@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace WebUI.Controllers
+namespace Discussor.WebUI.Controllers
 {
     public class AccountController : Controller
     {

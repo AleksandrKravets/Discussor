@@ -10,7 +10,7 @@ namespace Discussor.Infrastructure.Contracts
         public DbSet<Theme> Themes { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Reply> PostReplies { get; set; }
-        public DbSet<UserIdentity> Users { get; set; }
+        public DbSet<Identity.User> Users { get; set; }
         Task<int> SaveChangesAsync();
     }
 }

@@ -6,7 +6,7 @@ namespace Discussor.Core.Application.Common.Contracts.Repositories
 {
     public interface IUserRepository
     {
-        Task<int> Create(User user);
+        Task<string> Create(User user);
         Task<User> GetUserById(string userId);
         IEnumerable<User> GetAllUsers();
         Task<bool> Update(User user);

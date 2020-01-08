@@ -13,6 +13,8 @@ namespace Discussor.Core.Domain.Entities
         public int ThemeId { get; set; }
         public virtual Theme Theme { get; set; }
         public virtual IEnumerable<Reply> Replies { get; set; }
+
         public string UserId { get; set; }
+        //public User User { get; set; }
     }
 }

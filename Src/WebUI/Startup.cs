@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Discussor.Core.Application;
 using Discussor.Infrastructure;
 
-namespace WebUI
+namespace Discussor.WebUI
 {
     public class Startup
     {
