@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Application.Themes.Queries.GetThemesList
+namespace Discussor.Core.Application.Themes.Queries.GetThemesList
 {
     public class ThemeDto
     {

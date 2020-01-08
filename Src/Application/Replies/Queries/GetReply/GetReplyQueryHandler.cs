@@ -5,7 +5,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Replies.Queries.GetReply
+namespace Discussor.Core.Application.Replies.Queries.GetReply
 {
     public class GetReplyQueryHandler : IRequestHandler<GetReplyQuery, ReplyViewModel>
     {

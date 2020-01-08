@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Application.Themes.Queries.GetThemesList
+namespace Discussor.Core.Application.Themes.Queries.GetThemesList
 {
     public class ThemesListViewModel
     {

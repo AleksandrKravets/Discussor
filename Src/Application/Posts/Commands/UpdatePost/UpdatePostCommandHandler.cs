@@ -1,11 +1,10 @@
 ﻿using Discussor.Core.Application.Common.Contracts.Services;
 using Discussor.Core.Domain.Entities;
 using MediatR;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Posts.Commands.UpdatePost
+namespace Discussor.Core.Application.Posts.Commands.UpdatePost
 {
     public class UpdatePostCommandHandler : IRequestHandler<UpdatePostCommand, bool>
     {

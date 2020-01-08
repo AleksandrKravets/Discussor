@@ -6,7 +6,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Replies.Commands.CreateReply
+namespace Discussor.Core.Application.Replies.Commands.CreateReply
 {
     public class CreateReplyCommandHandler : IRequestHandler<CreateReplyCommand, int>
     {

@@ -3,7 +3,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Replies.Commands.DeleteReply
+namespace Discussor.Core.Application.Replies.Commands.DeleteReply
 {
     public class DeleteReplyCommandHandler : IRequestHandler<DeleteReplyCommand, bool>
     {

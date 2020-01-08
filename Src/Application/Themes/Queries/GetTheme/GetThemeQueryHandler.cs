@@ -2,11 +2,10 @@
 using Discussor.Core.Application.Common.Exceptions;
 using Discussor.Core.Domain.Entities;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Themes.Queries.GetTheme
+namespace Discussor.Core.Application.Themes.Queries.GetTheme
 {
     public class GetThemeQueryHandler : IRequestHandler<GetThemeQuery, ThemeViewModel>
     {

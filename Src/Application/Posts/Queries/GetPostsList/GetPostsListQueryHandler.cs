@@ -2,12 +2,11 @@
 using Discussor.Core.Application.Common.Exceptions;
 using Discussor.Core.Domain.Entities;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Posts.Queries.GetPostsList
+namespace Discussor.Core.Application.Posts.Queries.GetPostsList
 {
     public class GetPostsListQueryHandler : IRequestHandler<GetPostsListQuery, PostsListViewModel>
     {

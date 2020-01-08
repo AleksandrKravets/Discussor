@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Infrastructure;
-using Application;
 using Discussor.Core.Application;
 using Discussor.Infrastructure;
 
@@ -23,7 +21,6 @@ namespace WebUI
         {
             services.AddApplication();
             services.AddInfrastructure(Configuration);
-
             services.AddControllersWithViews();
         }
 

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.Posts.Queries.GetPostsList
+namespace Discussor.Core.Application.Posts.Queries.GetPostsList
 {
     public class GetPostsListQuery : IRequest<PostsListViewModel>
     {

@@ -5,7 +5,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Replies.Commands.UpdateReply
+namespace Discussor.Core.Application.Replies.Commands.UpdateReply
 {
     public class UpdateReplyCommandHandler : IRequestHandler<UpdateReplyCommand, bool>
     {

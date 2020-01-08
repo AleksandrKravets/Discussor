@@ -3,7 +3,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Themes.Commands.DeleteTheme
+namespace Discussor.Core.Application.Themes.Commands.DeleteTheme
 {
     public class DeleteThemeCommandHandler : IRequestHandler<DeleteThemeCommand, bool>
     {

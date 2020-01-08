@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.Posts.Commands.DeletePost
+namespace Discussor.Core.Application.Posts.Commands.DeletePost
 {
     public class DeletePostCommand : IRequest<bool>
     {

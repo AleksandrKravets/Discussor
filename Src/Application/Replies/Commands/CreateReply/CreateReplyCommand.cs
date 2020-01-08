@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.Replies.Commands.CreateReply
+namespace Discussor.Core.Application.Replies.Commands.CreateReply
 {
     public class CreateReplyCommand : IRequest<int>
     {

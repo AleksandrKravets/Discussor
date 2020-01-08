@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.Replies.Commands.DeleteReply
+namespace Discussor.Core.Application.Replies.Commands.DeleteReply
 {
     public class DeleteReplyCommand : IRequest<bool>
     {

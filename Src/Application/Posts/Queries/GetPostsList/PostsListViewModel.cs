@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Application.Posts.Queries.GetPostsList
+namespace Discussor.Core.Application.Posts.Queries.GetPostsList
 {
     public class PostsListViewModel
     {

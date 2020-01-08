@@ -1,5 +1,7 @@
-﻿using Discussor.Infrastructure.Contracts;
+﻿using Discussor.Core.Application.Common.Contracts.Repositories;
+using Discussor.Infrastructure.Contracts;
 using Discussor.Infrastructure.Identity;
+using Discussor.Infrastructure.Repositories;
 using Discussor.Infrastructure.Services;
 using DiscussorInfrastructure.Services;
 using Infrastructure.Contexts;
@@ -15,11 +17,15 @@ namespace Discussor.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddScoped<IThemeRepository, ThemeRepository>();
+            services.AddScoped<IPostRepository, PostRepository>();
+            services.AddScoped<IReplyRepository, ReplyRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DiscussorDatabase")));
 
-           // services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
-
+            services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
 
             services.AddIdentity<UserIdentity, IdentityRole>(options => {
                 options.Password.RequireDigit = false;

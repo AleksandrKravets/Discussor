@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.Themes.Queries.GetThemesList
+namespace Discussor.Core.Application.Themes.Queries.GetThemesList
 {
     public class GetThemesListQuery : IRequest<ThemesListViewModel>
     {

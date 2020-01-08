@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Application.Replies.Queries.GetRepliesList
+namespace Discussor.Core.Application.Replies.Queries.GetRepliesList
 {
     public class ReplyDto
     {

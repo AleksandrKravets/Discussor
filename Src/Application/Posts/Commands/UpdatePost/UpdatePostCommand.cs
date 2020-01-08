@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.Posts.Commands.UpdatePost
+namespace Discussor.Core.Application.Posts.Commands.UpdatePost
 {
     public class UpdatePostCommand : IRequest<bool>
     {

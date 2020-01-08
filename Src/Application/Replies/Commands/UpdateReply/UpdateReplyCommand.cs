@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.Replies.Commands.UpdateReply
+namespace Discussor.Core.Application.Replies.Commands.UpdateReply
 {
     public class UpdateReplyCommand : IRequest<bool>
     {

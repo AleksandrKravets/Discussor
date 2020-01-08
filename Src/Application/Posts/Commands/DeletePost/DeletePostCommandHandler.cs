@@ -1,11 +1,9 @@
 ﻿using Discussor.Core.Application.Common.Contracts.Services;
-using Discussor.Core.Application.Common.Exceptions;
-using Discussor.Core.Domain.Entities;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Posts.Commands.DeletePost
+namespace Discussor.Core.Application.Posts.Commands.DeletePost
 {
     public class DeletePostCommandHandler : IRequestHandler<DeletePostCommand, bool>
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Themes.Queries.GetThemesList
+namespace Discussor.Core.Application.Themes.Queries.GetThemesList
 {
     public class GetThemesListQueryHandler : IRequestHandler<GetThemesListQuery, ThemesListViewModel>
     {

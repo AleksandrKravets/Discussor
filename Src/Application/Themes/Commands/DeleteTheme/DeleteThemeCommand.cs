@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.Themes.Commands.DeleteTheme
+namespace Discussor.Core.Application.Themes.Commands.DeleteTheme
 {
     public class DeleteThemeCommand : IRequest<bool>
     {

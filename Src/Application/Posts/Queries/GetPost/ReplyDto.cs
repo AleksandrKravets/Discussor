@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Application.Posts.Queries.GetPost
+namespace Discussor.Core.Application.Posts.Queries.GetPost
 {
     public class ReplyDto
     {

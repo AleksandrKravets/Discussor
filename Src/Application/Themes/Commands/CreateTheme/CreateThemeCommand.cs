@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.Themes.Commands.CreateTheme
+namespace Discussor.Core.Application.Themes.Commands.CreateTheme
 {
     public class CreateThemeCommand : IRequest<int>
     {

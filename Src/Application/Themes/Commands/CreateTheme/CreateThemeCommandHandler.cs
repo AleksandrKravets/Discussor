@@ -5,7 +5,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Themes.Commands.CreateTheme
+namespace Discussor.Core.Application.Themes.Commands.CreateTheme
 {
     public class CreateThemeCommandHandler : IRequestHandler<CreateThemeCommand, int>
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Application.Themes.Queries.GetTheme
+namespace Discussor.Core.Application.Themes.Queries.GetTheme
 {
     public class ThemeViewModel
     {

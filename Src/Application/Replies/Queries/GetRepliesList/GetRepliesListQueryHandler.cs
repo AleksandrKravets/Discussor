@@ -2,12 +2,11 @@
 using Discussor.Core.Application.Common.Exceptions;
 using Discussor.Core.Domain.Entities;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Replies.Queries.GetRepliesList
+namespace Discussor.Core.Application.Replies.Queries.GetRepliesList
 {
     public class GetRepliesListQueryHandler : IRequestHandler<GetRepliesListQuery, RepliesListViewModel>
     {

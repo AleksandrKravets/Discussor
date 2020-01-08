@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Application.Replies.Queries.GetReply
+namespace Discussor.Core.Application.Replies.Queries.GetReply
 {
     public class ReplyViewModel
     {
