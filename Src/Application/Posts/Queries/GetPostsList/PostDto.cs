@@ -9,5 +9,7 @@ namespace Discussor.Core.Application.Posts.Queries.GetPostsList
         public string Content { get; set; }
         public DateTime DateOfCreation { get; set; }
         public int ThemeId { get; set; }
+
+        public UserDto Creator { get; set; }
     }
 }

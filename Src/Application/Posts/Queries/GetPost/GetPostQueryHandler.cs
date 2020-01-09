@@ -39,15 +39,15 @@ namespace Discussor.Core.Application.Posts.Queries.GetPost
                     DateOfCreation = reply.DateOfCreation,
                     Creator = new UserDto
                     {
-                        Id = reply.UserId,
-                        UserName = _userService.GetUserByIdAsync(reply.UserId).Result.UserName
+                        Id = reply.Creator.Id,
+                        NickName = reply.Creator.NickName
                     }
                 }).ToList();
 
             var postCreator = new UserDto
             {
-                Id = post.UserId,
-                UserName = (await _userService.GetUserByIdAsync(post.UserId)).UserName ?? "lox"
+                Id = post.Creator.Id,
+                NickName = post.Creator.NickName
             };
 
             var result = new PostViewModel

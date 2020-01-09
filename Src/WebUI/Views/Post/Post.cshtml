@@ -70,7 +70,7 @@
 </style>
 
 
-<div class="container messageContainer">
+@*<div class="container messageContainer">
     @if (TempData["Message"] != null)
     {
         <div class="alert alert-danger">
@@ -78,22 +78,14 @@
             <a asp-action="ResendEmail" asp-controller="Account"> Resend.</a>
         </div>
     }
-</div>
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Content { get; set; }
-        public DateTime DateOfCreation { get; set; }
-        public int ThemeId { get; set; }
+</div>*@
 
-        public int Id { get; set; }
-        public string Content { get; set; }
-        public DateTime DateOfCreation { get; set; }
 <div class="container postsContainer">
     <div class="post">
         <div class="row">
             <div class="col-8 postTitle">@Model.Title</div>
-            @if (User.Identity.Name == Model.Creator.UserName)
-            {
+            @*@if (User.Identity.Name == Model.Creator.UserName)
+            {*@
                 <div class="col-4 postAuthor">
                     <span>
                         <a asp-action="Edit" asp-controller="Post" asp-route-postId="@Model.Id" asp-route-themeId="@Model.ThemeId">
@@ -106,10 +98,10 @@
                         </a>
                     </span>
                 </div>
-            } else
+            @*} else
             {
-                <div class="col-4 postAuthor">@Model.Creator.UserName</div>
-            }
+                <div class="col-4 postAuthor">@Model.Creator.NickName</div>
+            }*@
         </div>
         <div class="row">
             <div class="col-12 postContent">
@@ -124,8 +116,8 @@
     </div>
 </div>
 
-@if (User.Identity.IsAuthenticated)
-{
+@*@if (User.Identity.IsAuthenticated)
+{*@
     <div class="container btnContainer">
         <div class="row">
             <div class="col-12" style="text-align: center;">
@@ -135,7 +127,7 @@
             </div>
         </div>
     </div>
-}
+@*}*@
 
 <div class="container repliesContainer">
     @foreach (var reply in Model.Replies)
@@ -143,11 +135,11 @@
         <div class="reply">
             <div class="row">
                 <div class="col-9 replyAuthor">
-                    @reply.
+                    @*@reply.*@
                 </div>
                 <div class="col-3 replyAuthor">
-                    @if (User.Identity.Name == reply.Creator.UserName)
-                    {
+                    @*@if (User.Identity.Name == reply.Creator.UserName)
+                    {*@
                         <span>
                             <a asp-action="Edit" asp-controller="Reply" asp-route-postId="@Model.Id" asp-route-replyId="@reply.Id">
                                 Edit
@@ -158,7 +150,7 @@
                                 Delete
                             </a>
                         </span>
-                    }
+                    @*}*@
                 </div>
             </div>
             <div class="row replyContent">

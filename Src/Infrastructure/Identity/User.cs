@@ -1,6 +1,5 @@
 ﻿using Discussor.Core.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
-using System.Collections.Generic;
 
 namespace Discussor.Infrastructure.Identity
 {

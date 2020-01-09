@@ -8,5 +8,7 @@ namespace Discussor.Core.Application.Replies.Queries.GetReply
         public string Content { get; set; }
         public DateTime DateOfCreation { get; set; }
         public int PostId { get; set; }
+
+        public UserDto Creator { get; set; }
     }
 }

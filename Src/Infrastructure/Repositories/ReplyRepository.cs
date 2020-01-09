@@ -39,7 +39,7 @@ namespace Discussor.Infrastructure.Repositories
 
         public IEnumerable<Reply> GetAllReplies()
         {
-            return _context.PostReplies;
+            return _context.PostReplies.Include(r => r.Creator);
         }
 
         public async Task<Reply> GetReplyById(int replyId)

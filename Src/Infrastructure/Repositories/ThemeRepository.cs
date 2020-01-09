@@ -39,7 +39,7 @@ namespace Discussor.Infrastructure.Repositories
 
         public IEnumerable<Theme> GetAllThemes()
         {
-            return _context.Themes;
+            return _context.Themes.Include(r => r.Creator);
         }
 
         public async Task<Theme> GetThemeById(int themeId)
