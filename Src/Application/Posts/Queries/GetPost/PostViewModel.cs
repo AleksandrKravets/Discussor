@@ -11,6 +11,7 @@ namespace Discussor.Core.Application.Posts.Queries.GetPost
         public DateTime DateOfCreation { get; set; }
         public int ThemeId { get; set; }
 
+        public UserDto Creator { get; set; }
         public IEnumerable<ReplyDto> Replies { get; set; }
     }
 }

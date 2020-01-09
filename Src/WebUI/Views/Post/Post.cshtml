@@ -1,0 +1,180 @@
+﻿@model Discussor.Core.Application.Posts.Queries.GetPost.PostViewModel
+
+<style>
+
+    .postsContainer {
+        max-width: 55%;
+        margin-bottom: 30px;
+    }
+
+    .post {
+        background: rgba(194,210,233,0.3);
+        border: 1px solid;
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+    .postDate {
+        text-align: right;
+    }
+
+    .postAuthor {
+        text-align: right;
+        padding-right: 20px;
+        font-weight: bold;
+    }
+
+    .postContent {
+        padding: 20px;
+    }
+
+    .postTitle {
+        font-weight: bold;
+    }
+
+    .repliesContainer {
+        max-width: 40%;
+    }
+
+    .reply {
+        background: rgba(194,210,233,0.3);
+        border: 1px solid;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 25px;
+    }
+
+    .replyAuthor {
+        text-align: left;
+        padding-left: 20px;
+        font-weight: bold;
+    }
+
+    .replyContent {
+        padding: 20px;
+    }
+
+    .replyDate {
+        text-align: right;
+    }
+
+    .btnContainer {
+        max-width: 55%;
+        margin-bottom: 30px;
+    }
+
+    .messageContainer {
+        max-width: 40%;
+        text-align: center;
+    }
+</style>
+
+
+<div class="container messageContainer">
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["Message"].
+            <a asp-action="ResendEmail" asp-controller="Account"> Resend.</a>
+        </div>
+    }
+</div>
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+        public DateTime DateOfCreation { get; set; }
+        public int ThemeId { get; set; }
+
+        public int Id { get; set; }
+        public string Content { get; set; }
+        public DateTime DateOfCreation { get; set; }
+<div class="container postsContainer">
+    <div class="post">
+        <div class="row">
+            <div class="col-8 postTitle">@Model.Post.Title</div>
+            @if (User.Identity.Name == Model.Post.Author)
+            {
+                <div class="col-4 postAuthor">
+                    <span>
+                        <a asp-action="Edit" asp-controller="Post" asp-route-postId="@Model.Post.Id" asp-route-themeId="@Model.Post.ThemeId">
+                            Edit
+                        </a>
+                    </span>
+                    <span style="padding-left:5px">
+                        <a asp-action="Delete" asp-controller="Post" asp-route-postId="@Model.Post.Id" asp-route-themeId="@Model.Post.ThemeId">
+                            Delete
+                        </a>
+                    </span>
+                </div>
+            } else
+            {
+                <div class="col-4 postAuthor">@Model.Post.Author</div>
+            }
+        </div>
+        <div class="row">
+            <div class="col-12 postContent">
+                @Model.Post.Content
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 postDate">
+                @Model.Post.DateOfCreation.ToShortDateString()
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="container btnContainer">
+        <div class="row">
+            <div class="col-12" style="text-align: center;">
+                <a class="btn btn-outline-primary" asp-action="Reply" asp-controller="Reply" asp-route-postId="@Model.Post.Id">
+                    Reply
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="container repliesContainer">
+    @foreach (var reply in Model.Replies)
+    {
+        <div class="reply">
+            <div class="row">
+                <div class="col-9 replyAuthor">
+                    @reply.Author
+                </div>
+                <div class="col-3 replyAuthor">
+                    @if (User.Identity.Name == reply.Author)
+                    {
+                        <span>
+                            <a asp-action="Edit" asp-controller="Reply" asp-route-postId="@Model.Post.Id" asp-route-replyId="@reply.Id">
+                                Edit
+                            </a>
+                        </span>
+                        <span style="padding-left:5px">
+                            <a asp-action="Delete" asp-controller="Reply" asp-route-postId="@Model.Post.Id" asp-route-replyId="@reply.Id">
+                                Delete
+                            </a>
+                        </span>
+                    }
+                </div>
+            </div>
+            <div class="row replyContent">
+                <div class="col-12">
+                    @reply.Content
+                </div>
+            </div>
+            <div class="row replyDate">
+                <div class="col-12">
+                    @reply.DateOfCreation.ToShortDateString()
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+

@@ -6,8 +6,8 @@ namespace Discussor.Infrastructure.Identity
 {
     public class User : IdentityUser
     {
-        public virtual IEnumerable<Theme> Themes { get; set; }
-        public virtual IEnumerable<Post> Posts { get; set; }
-        public virtual IEnumerable<Reply> Replies { get; set; }
+        public virtual ICollection<Theme> Themes { get; set; }
+        public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<Reply> Replies { get; set; }
     }
 }

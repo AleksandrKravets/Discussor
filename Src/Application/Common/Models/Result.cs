@@ -21,7 +21,6 @@
     {
         public T Value { get; set; }
 
-
         protected internal Result(bool success, T value)
             : base(success)
         {

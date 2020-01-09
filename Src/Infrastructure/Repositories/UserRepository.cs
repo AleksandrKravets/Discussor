@@ -20,7 +20,7 @@ namespace Discussor.Infrastructure.Repositories
         {
             var newUser = new Identity.User
             {
-                UserName = user.Username
+                UserName = user.UserName
             };
 
             await _context.Users.AddAsync(newUser);
@@ -48,7 +48,7 @@ namespace Discussor.Infrastructure.Repositories
                 .Select(user => new Core.Domain.Entities.User
                 {
                     Id = user.Id,
-                    Username = user.UserName
+                    UserName = user.UserName
                 });
         }
 
@@ -59,7 +59,7 @@ namespace Discussor.Infrastructure.Repositories
             return new Core.Domain.Entities.User
             {
                 Id = user.Id,
-                Username = user.UserName
+                UserName = user.UserName
             };
         }
 
@@ -70,7 +70,7 @@ namespace Discussor.Infrastructure.Repositories
             if (userToUpdate == null)
                 return false;
 
-            userToUpdate.UserName = user.Username;
+            userToUpdate.UserName = user.UserName;
 
             await _context.SaveChangesAsync();
 
