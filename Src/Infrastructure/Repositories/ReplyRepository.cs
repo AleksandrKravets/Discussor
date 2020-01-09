@@ -1,6 +1,7 @@
 ﻿using Discussor.Core.Application.Common.Contracts.Repositories;
 using Discussor.Core.Domain.Entities;
 using Discussor.Infrastructure.Contracts;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

@@ -91,34 +91,34 @@
 <div class="container postsContainer">
     <div class="post">
         <div class="row">
-            <div class="col-8 postTitle">@Model.Post.Title</div>
-            @if (User.Identity.Name == Model.Post.Author)
+            <div class="col-8 postTitle">@Model.Title</div>
+            @if (User.Identity.Name == Model.Creator.UserName)
             {
                 <div class="col-4 postAuthor">
                     <span>
-                        <a asp-action="Edit" asp-controller="Post" asp-route-postId="@Model.Post.Id" asp-route-themeId="@Model.Post.ThemeId">
+                        <a asp-action="Edit" asp-controller="Post" asp-route-postId="@Model.Id" asp-route-themeId="@Model.ThemeId">
                             Edit
                         </a>
                     </span>
                     <span style="padding-left:5px">
-                        <a asp-action="Delete" asp-controller="Post" asp-route-postId="@Model.Post.Id" asp-route-themeId="@Model.Post.ThemeId">
+                        <a asp-action="Delete" asp-controller="Post" asp-route-postId="@Model.Id" asp-route-themeId="@Model.ThemeId">
                             Delete
                         </a>
                     </span>
                 </div>
             } else
             {
-                <div class="col-4 postAuthor">@Model.Post.Author</div>
+                <div class="col-4 postAuthor">@Model.Creator.UserName</div>
             }
         </div>
         <div class="row">
             <div class="col-12 postContent">
-                @Model.Post.Content
+                @Model.Content
             </div>
         </div>
         <div class="row">
             <div class="col-12 postDate">
-                @Model.Post.DateOfCreation.ToShortDateString()
+                @Model.DateOfCreation.ToShortDateString()
             </div>
         </div>
     </div>
@@ -129,7 +129,7 @@
     <div class="container btnContainer">
         <div class="row">
             <div class="col-12" style="text-align: center;">
-                <a class="btn btn-outline-primary" asp-action="Reply" asp-controller="Reply" asp-route-postId="@Model.Post.Id">
+                <a class="btn btn-outline-primary" asp-action="Reply" asp-controller="Reply" asp-route-postId="@Model.Id">
                     Reply
                 </a>
             </div>
@@ -143,18 +143,18 @@
         <div class="reply">
             <div class="row">
                 <div class="col-9 replyAuthor">
-                    @reply.Author
+                    @reply.
                 </div>
                 <div class="col-3 replyAuthor">
-                    @if (User.Identity.Name == reply.Author)
+                    @if (User.Identity.Name == reply.Creator.UserName)
                     {
                         <span>
-                            <a asp-action="Edit" asp-controller="Reply" asp-route-postId="@Model.Post.Id" asp-route-replyId="@reply.Id">
+                            <a asp-action="Edit" asp-controller="Reply" asp-route-postId="@Model.Id" asp-route-replyId="@reply.Id">
                                 Edit
                             </a>
                         </span>
                         <span style="padding-left:5px">
-                            <a asp-action="Delete" asp-controller="Reply" asp-route-postId="@Model.Post.Id" asp-route-replyId="@reply.Id">
+                            <a asp-action="Delete" asp-controller="Reply" asp-route-postId="@Model.Id" asp-route-replyId="@reply.Id">
                                 Delete
                             </a>
                         </span>

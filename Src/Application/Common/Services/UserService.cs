@@ -1,30 +1,39 @@
-﻿using Discussor.Core.Application.Common.Contracts.Services;
+﻿using Discussor.Core.Application.Common.Contracts.Repositories;
+using Discussor.Core.Application.Common.Contracts.Services;
 using Discussor.Core.Domain.Entities;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Discussor.Core.Application.Common.Services
 {
     public class UserService : IUserService
     {
-        public Task<string> CreateAsync(User user)
+        private readonly IUserRepository _userRepository;
+
+        public UserService(IUserRepository userRepository)
         {
-            throw new System.NotImplementedException();
+            _userRepository = userRepository;
         }
 
-        public Task<bool> DeleteAsync(int userId)
+        public async Task<int> CreateAsync(ApplicationUser user)
         {
-            throw new System.NotImplementedException();
+            return await _userRepository.Create(user);
         }
 
-        public IEnumerable<User> GetAllUsers()
+        public async Task<bool> DeleteAsync(int userId)
         {
-            throw new System.NotImplementedException();
+            return await _userRepository.Delete(userId);
         }
 
-        public Task<User> GetUserByIdAsync(string userId)
+        public IEnumerable<ApplicationUser> GetAllUsers()
         {
-            throw new System.NotImplementedException();
+            return _userRepository.GetAllUsers().ToList();
+        }
+
+        public async Task<ApplicationUser> GetUserByIdAsync(int userId)
+        {
+            return await _userRepository.GetUserById(userId);
         }
     }
 }

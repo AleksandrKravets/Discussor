@@ -12,11 +12,16 @@ namespace Discussor.Core.Application.Posts.Queries.GetPost
     {
         private readonly IPostService _postService;
         private readonly IReplyService _replyService;
+        private readonly IUserService _userService;
 
-        public GetPostQueryHandler(IPostService postService, IReplyService replyService)
+        public GetPostQueryHandler(
+            IPostService postService,
+            IReplyService replyService,
+            IUserService userService)
         {
             _postService = postService;
             _replyService = replyService;
+            _userService = userService;
         }
 
         public async Task<PostViewModel> Handle(GetPostQuery request, CancellationToken cancellationToken)
@@ -31,9 +36,19 @@ namespace Discussor.Core.Application.Posts.Queries.GetPost
                 {
                     Id = reply.Id,
                     Content = reply.Content,
-                    DateOfCreation = reply.DateOfCreation
+                    DateOfCreation = reply.DateOfCreation,
+                    Creator = new UserDto
+                    {
+                        Id = reply.UserId,
+                        UserName = _userService.GetUserByIdAsync(reply.UserId).Result.UserName
+                    }
                 }).ToList();
 
+            var postCreator = new UserDto
+            {
+                Id = post.UserId,
+                UserName = (await _userService.GetUserByIdAsync(post.UserId)).UserName ?? "lox"
+            };
 
             var result = new PostViewModel
             {
@@ -42,7 +57,8 @@ namespace Discussor.Core.Application.Posts.Queries.GetPost
                 Content = post.Content,
                 DateOfCreation = post.DateOfCreation,
                 ThemeId = post.ThemeId,
-                Replies = replies
+                Replies = replies,
+                Creator = postCreator
             };
 
             return result;

@@ -4,14 +4,16 @@ using Discussor.Core.Domain.Entities;
 using Discussor.Infrastructure.Contracts;
 using System.Threading.Tasks;
 using System.Linq;
+using Discussor.Infrastructure.Identity;
 
 namespace Infrastructure.Contexts
 {
-    internal class ApplicationDbContext : IdentityDbContext<Discussor.Infrastructure.Identity.User>, IApplicationDbContext
+    internal class ApplicationDbContext : IdentityDbContext<User>, IApplicationDbContext
     {
         public DbSet<Theme> Themes { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Reply> PostReplies { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

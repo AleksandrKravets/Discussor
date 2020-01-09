@@ -8,5 +8,6 @@ namespace Discussor.Core.Application.Themes.Queries.GetTheme
         public string Title { get; set; }
         public DateTime DateOfCreation { get; set; }
         public byte[] Image { get; set; }
+        // добавить создателя
     }
 }

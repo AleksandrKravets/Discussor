@@ -9,9 +9,10 @@ namespace Discussor.Core.Domain.Entities
         public string Title { get; set; }
         public DateTime DateOfCreation { get; set; }
         public byte[] Image { get; set; }
+        public string UserId { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }
-        public string UserId { get; set; }
+        public virtual ApplicationUser Creator { get; set; }
 
         public Theme()
         {

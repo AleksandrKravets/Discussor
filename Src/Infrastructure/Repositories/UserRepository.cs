@@ -16,61 +16,44 @@ namespace Discussor.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<string> Create(User user)
+        public async Task<int> Create(ApplicationUser user)
         {
-            var newUser = new Identity.User
-            {
-                UserName = user.UserName
-            };
-
-            await _context.Users.AddAsync(newUser);
+            await _context.ApplicationUsers.AddAsync(user);
             await _context.SaveChangesAsync();
-
-            return newUser.Id;
+            return user.Id;
         }
 
-        public async Task<bool> Delete(string userId)
+        public async Task<bool> Delete(int userId)
         {
-            var user = await _context.Users.FindAsync(userId);
+            var user = await _context.ApplicationUsers.FindAsync(userId);
 
             if (user == null)
                 return false;
 
-            _context.Users.Remove(user);
+            _context.ApplicationUsers.Remove(user);
             await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public IEnumerable<User> GetAllUsers()
+        public IEnumerable<ApplicationUser> GetAllUsers()
         {
-            return _context.Users
-                .Select(user => new Core.Domain.Entities.User
-                {
-                    Id = user.Id,
-                    UserName = user.UserName
-                });
+            return _context.ApplicationUsers;
         }
 
-        public async Task<User> GetUserById(string userId)
+        public async Task<ApplicationUser> GetUserById(int userId)
         {
-            var user = await _context.Users.FindAsync(userId);
-
-            return new Core.Domain.Entities.User
-            {
-                Id = user.Id,
-                UserName = user.UserName
-            };
+            return await _context.ApplicationUsers.FindAsync(userId);
         }
 
-        public async Task<bool> Update(User user)
+        public async Task<bool> Update(ApplicationUser user)
         {
-            var userToUpdate = await _context.Users.FindAsync(user.Id);
+            var userToUpdate = await _context.ApplicationUsers.FindAsync(user.Id);
 
             if (userToUpdate == null)
                 return false;
 
-            userToUpdate.UserName = user.UserName;
+            userToUpdate.NickName = user.NickName;
 
             await _context.SaveChangesAsync();
 
