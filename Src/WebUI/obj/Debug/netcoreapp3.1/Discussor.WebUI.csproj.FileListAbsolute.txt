@@ -140,3 +140,6 @@ C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\obj\Debug\netc
 C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Post\Posts.cshtml.g.cs
 C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Post\Create.cshtml.g.cs
 C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Post\Post.cshtml.g.cs
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Reply\Reply.cshtml.g.cs
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Reply\Edit.cshtml.g.cs
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs

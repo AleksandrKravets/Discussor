@@ -15,7 +15,6 @@ namespace Discussor.Core.Application
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<IReplyService, ReplyService>();
             services.AddScoped<IUserService, UserService>();
-
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 

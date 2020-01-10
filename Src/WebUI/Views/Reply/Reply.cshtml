@@ -1,0 +1,16 @@
+﻿@model Discussor.Core.Application.Replies.Commands.CreateReply.CreateReplyCommand
+
+
+<div class="container text-light">
+    <h1>Reply</h1>
+
+    <form method="post">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="form-group">
+            <textarea rows="7" asp-for="Content" class="form-control"></textarea>
+            <span asp-validation-for="Content"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Reply</button>
+        <input asp-for="PostId" type="hidden" />
+    </form>
+</div>
