@@ -3,7 +3,9 @@ using Discussor.Core.Application.Posts.Commands.DeletePost;
 using Discussor.Core.Application.Posts.Commands.UpdatePost;
 using Discussor.Core.Application.Posts.Queries.GetPost;
 using Discussor.Core.Application.Posts.Queries.GetPostsList;
+using Discussor.Infrastructure.Identity;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -11,6 +13,13 @@ namespace Discussor.WebUI.Controllers
 {
     public class PostController : BaseController
     {
+        private readonly UserManager<User> _userManager;
+
+        public PostController(UserManager<User> userManager)
+        {
+            _userManager = userManager;
+        }
+
         [HttpGet]
         public async Task<IActionResult> Posts(int themeId)
         {

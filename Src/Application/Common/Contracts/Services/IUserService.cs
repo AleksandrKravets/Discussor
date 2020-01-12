@@ -6,9 +6,9 @@ namespace Discussor.Core.Application.Common.Contracts.Services
 {
     public interface IUserService
     {
-        Task<int> CreateAsync(ApplicationUser user);
-        Task<ApplicationUser> GetUserByIdAsync(int userId);
+        Task<string> CreateAsync(ApplicationUser user);
+        Task<ApplicationUser> GetUserByIdAsync(string userId);
         IEnumerable<ApplicationUser> GetAllUsers();
-        Task<bool> DeleteAsync(int userId);
+        Task<bool> DeleteAsync(string userId);
     }
 }

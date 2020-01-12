@@ -16,14 +16,14 @@ namespace Discussor.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<int> Create(ApplicationUser user)
+        public async Task<string> Create(ApplicationUser user)
         {
             await _context.ApplicationUsers.AddAsync(user);
             await _context.SaveChangesAsync();
             return user.Id;
         }
 
-        public async Task<bool> Delete(int userId)
+        public async Task<bool> Delete(string userId)
         {
             var user = await _context.ApplicationUsers.FindAsync(userId);
 
@@ -41,7 +41,7 @@ namespace Discussor.Infrastructure.Repositories
             return _context.ApplicationUsers;
         }
 
-        public async Task<ApplicationUser> GetUserById(int userId)
+        public async Task<ApplicationUser> GetUserById(string userId)
         {
             return await _context.ApplicationUsers.FindAsync(userId);
         }

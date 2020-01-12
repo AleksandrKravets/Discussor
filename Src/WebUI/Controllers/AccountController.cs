@@ -1,4 +1,5 @@
-﻿using Discussor.Infrastructure.Contracts;
+﻿using Discussor.Core.Domain.Entities;
+using Discussor.Infrastructure.Contracts;
 using Discussor.Infrastructure.Identity;
 using Discussor.WebUI.Models.Account;
 using Microsoft.AspNetCore.Authorization;
@@ -33,6 +34,14 @@ namespace Discussor.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 User user = new User { Email = model.Email, UserName = model.Login };
+
+                var applicationUser = new ApplicationUser 
+                {
+                    NickName = user.UserName
+                };
+
+                user.ApplicationUser = applicationUser;
+
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

@@ -16,12 +16,12 @@ namespace Discussor.Core.Application.Common.Services
             _userRepository = userRepository;
         }
 
-        public async Task<int> CreateAsync(ApplicationUser user)
+        public async Task<string> CreateAsync(ApplicationUser user)
         {
             return await _userRepository.Create(user);
         }
 
-        public async Task<bool> DeleteAsync(int userId)
+        public async Task<bool> DeleteAsync(string userId)
         {
             return await _userRepository.Delete(userId);
         }
@@ -31,7 +31,7 @@ namespace Discussor.Core.Application.Common.Services
             return _userRepository.GetAllUsers().ToList();
         }
 
-        public async Task<ApplicationUser> GetUserByIdAsync(int userId)
+        public async Task<ApplicationUser> GetUserByIdAsync(string userId)
         {
             return await _userRepository.GetUserById(userId);
         }

@@ -6,10 +6,10 @@ namespace Discussor.Core.Application.Common.Contracts.Repositories
 {
     public interface IUserRepository
     {
-        Task<int> Create(ApplicationUser user);
-        Task<ApplicationUser> GetUserById(int userId);
+        Task<string> Create(ApplicationUser user);
+        Task<ApplicationUser> GetUserById(string userId);
         IEnumerable<ApplicationUser> GetAllUsers();
         Task<bool> Update(ApplicationUser user);
-        Task<bool> Delete(int userId);
+        Task<bool> Delete(string userId);
     }
 }

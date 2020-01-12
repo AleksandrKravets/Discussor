@@ -84,8 +84,8 @@
     <div class="post">
         <div class="row">
             <div class="col-8 postTitle">@Model.Title</div>
-            @*@if (User.Identity.Name == Model.Creator.UserName)
-            {*@
+            @if (User.Identity. == Model.Creator.NickName)
+            {
                 <div class="col-4 postAuthor">
                     <span>
                         <a asp-action="Edit" asp-controller="Post" asp-route-postId="@Model.Id" asp-route-themeId="@Model.ThemeId">

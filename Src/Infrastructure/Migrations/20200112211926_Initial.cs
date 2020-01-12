@@ -11,10 +11,8 @@ namespace Discussor.Infrastructure.Migrations
                 name: "ApplicationUsers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NickName = table.Column<string>(nullable: true),
-                    UserId = table.Column<string>(nullable: true)
+                    Id = table.Column<string>(nullable: false),
+                    NickName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -54,15 +52,14 @@ namespace Discussor.Infrastructure.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    ApplicationUserId = table.Column<int>(nullable: false),
-                    ApplicationUserId1 = table.Column<int>(nullable: true)
+                    ApplicationUserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUsers_ApplicationUsers_ApplicationUserId1",
-                        column: x => x.ApplicationUserId1,
+                        name: "FK_AspNetUsers_ApplicationUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
                         principalTable: "ApplicationUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -78,8 +75,8 @@ namespace Discussor.Infrastructure.Migrations
                     DateOfCreation = table.Column<DateTime>(nullable: false),
                     Image = table.Column<byte[]>(type: "image", nullable: false),
                     UserId = table.Column<string>(nullable: true),
-                    CreatorId = table.Column<int>(nullable: true),
-                    ApplicationUserId = table.Column<int>(nullable: true)
+                    CreatorId = table.Column<string>(nullable: true),
+                    ApplicationUserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -215,8 +212,8 @@ namespace Discussor.Infrastructure.Migrations
                     DateOfCreation = table.Column<DateTime>(nullable: false),
                     ThemeId = table.Column<int>(nullable: false),
                     UserId = table.Column<string>(nullable: true),
-                    CreatorId = table.Column<int>(nullable: true),
-                    ApplicationUserId = table.Column<int>(nullable: true)
+                    CreatorId = table.Column<string>(nullable: true),
+                    ApplicationUserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -251,8 +248,8 @@ namespace Discussor.Infrastructure.Migrations
                     DateOfCreation = table.Column<DateTime>(nullable: false),
                     PostId = table.Column<int>(nullable: false),
                     UserId = table.Column<string>(nullable: true),
-                    CreatorId = table.Column<int>(nullable: true),
-                    ApplicationUserId = table.Column<int>(nullable: true)
+                    CreatorId = table.Column<string>(nullable: true),
+                    ApplicationUserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -305,9 +302,9 @@ namespace Discussor.Infrastructure.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_ApplicationUserId1",
+                name: "IX_AspNetUsers_ApplicationUserId",
                 table: "AspNetUsers",
-                column: "ApplicationUserId1");
+                column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
