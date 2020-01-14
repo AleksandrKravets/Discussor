@@ -1,12 +1,12 @@
 ﻿using Discussor.Core.Domain.Entities;
 using Discussor.Infrastructure.Contracts;
-using Discussor.WebUI.Models.Account;
+using Discussor.WebUI.Areas.Account.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace Discussor.WebUI.Controllers
+namespace Discussor.WebUI.Areas.Account.Controllers
 {
     public class AccountController : Controller
     {
@@ -41,7 +41,7 @@ namespace Discussor.WebUI.Controllers
                     //var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, Request.Scheme);
                     //await _emailSender.SendEmailAsync(user.Email, "Account Confirmation", "<p>Confirm your account</p><br />  " + confirmationLink);
                     await _signInManager.SignInAsync(user, false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToRoute("default", new { action = "Index", controller = "Home" });
                 } else
                 {
                     foreach (var error in result.Errors)
@@ -66,7 +66,7 @@ namespace Discussor.WebUI.Controllers
                 var result =
                     await _signInManager.PasswordSignInAsync(model.Login, model.Password, model.RememberMe, false);
                 if (result.Succeeded)
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToRoute("default", new { action = "Index", controller = "Home" });
                 else
                     ModelState.AddModelError("", "Неправильный логин и (или) пароль");
             }
@@ -78,7 +78,7 @@ namespace Discussor.WebUI.Controllers
         public async Task<IActionResult> LogOut()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToRoute("default", new { action = "Index", controller = "Home" });
         }
 
         [HttpGet]
@@ -86,18 +86,18 @@ namespace Discussor.WebUI.Controllers
         public async Task<IActionResult> ConfirmEmail(string userId, string token)
         {
             if (userId == null || token == null)
-                return RedirectToAction("Index", "Home");
+                return RedirectToRoute("default", new { action = "Index", controller = "Home" });
 
             var user = await _userManager.FindByIdAsync(userId);
 
             if (user == null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToRoute("default", new { action = "Index", controller = "Home" });
             }
 
             var result = await _userManager.ConfirmEmailAsync(user, token);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToRoute("default", new { action = "Index", controller = "Home" });
         }
 
         //public async Task<IActionResult> ResendEmail()

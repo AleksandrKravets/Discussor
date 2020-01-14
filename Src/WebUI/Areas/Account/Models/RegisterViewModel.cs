@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Discussor.WebUI.Models.Account
+namespace Discussor.WebUI.Areas.Account.Models
 {
     public class RegisterViewModel
     {

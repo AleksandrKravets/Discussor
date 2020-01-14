@@ -52,6 +52,11 @@ namespace Discussor.WebUI
                     areaName: "Admin",
                     pattern: "Admin/{controller=Admin}/{action=Index}/{id?}");
 
+                endpoints.MapAreaControllerRoute(
+                    name: null,
+                    areaName: "Account",
+                    pattern: "Account/{controller=Account}/{action=Login}");
+
                 endpoints.MapControllerRoute(
                     name: null,
                     pattern: "Post/{postId}",
