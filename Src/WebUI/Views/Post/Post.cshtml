@@ -69,6 +69,17 @@
     }
 </style>
 
+@*<div class="container messageContainer">
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["Message"].
+            <a asp-action="ResendEmail" asp-controller="Account"> Resend.</a>
+        </div>
+    }
+</div>*@
+
+
 <div class="container postsContainer">
     <div class="post">
         <div class="row">
@@ -155,6 +166,14 @@
         </div>
     }
 </div>
+
+
+
+
+
+
+
+
 
 
 

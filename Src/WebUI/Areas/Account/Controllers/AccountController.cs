@@ -95,18 +95,18 @@ namespace Discussor.WebUI.Areas.Account.Controllers
                 return RedirectToRoute("default", new { action = "Index", controller = "Home" });
             }
 
-            var result = await _userManager.ConfirmEmailAsync(user, token);
+            await _userManager.ConfirmEmailAsync(user, token);
 
             return RedirectToRoute("default", new { action = "Index", controller = "Home" });
         }
 
-        //public async Task<IActionResult> ResendEmail()
-        //{
-        //    var user = await _userManager.GetUserAsync(User);
-        //    var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-        //    var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, Request.Scheme);
-        //    await _emailSender.SendEmailAsync(user.Email, "Account Confirmation", "<p>Confirm your account</p><br />  " + confirmationLink);
-        //    return RedirectToAction("Index", "Home");
-        //}
+        public async Task<IActionResult> ResendEmail()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token }, Request.Scheme);
+            await _emailSender.SendEmailAsync(user.Email, "Account Confirmation", "<p>Confirm your account</p><br />  " + confirmationLink);
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

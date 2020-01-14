@@ -149,3 +149,4 @@ C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\obj\Debug\netc
 C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Account\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\EmailConfirmationErrorPage.cshtml.g.cs
 C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Post\Edit.cshtml.g.cs

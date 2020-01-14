@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Discussor.Core.Application;
 using Discussor.Infrastructure;
+using Discussor.WebUI.Infrastructure.Filters;
 
 namespace Discussor.WebUI
 {
@@ -21,7 +22,10 @@ namespace Discussor.WebUI
         {
             services.AddApplication();
             services.AddInfrastructure(Configuration);
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(config => 
+            {
+                //config.Filters.Add(new EmailConfirmationAttribute());  
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

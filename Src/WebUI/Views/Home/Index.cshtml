@@ -2,6 +2,15 @@
 
 <link href="~/css/Index.css" rel="stylesheet" />
 
+<div class="container messageContainer">
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["Message"].
+            <a asp-action="ResendEmail" asp-controller="Account"> Resend.</a>
+        </div>
+    }
+</div>
 
 @if (Model.Themes.Count() == 0 && User.Identity.IsAuthenticated)
 {

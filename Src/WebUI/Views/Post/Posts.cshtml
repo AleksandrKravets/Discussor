@@ -3,6 +3,15 @@
 <link href="~/css/Index.css" rel="stylesheet" />
 
 
+@*<div class="container messageContainer">
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["Message"].
+                <a asp-action="ResendEmail" asp-controller="Account"> Resend.</a>
+            </div>
+        }
+    </div>*@
 
 
 @if (User.Identity.IsAuthenticated)
@@ -34,4 +43,30 @@
             </div>
         </div>
     </div>
+
+
+
+
+    @*<div class="row post">
+        <div class="col-3 title"><a asp-action="Post" asp-controller="Post" asp-route-postId="@post.Id">@post.Title</a></div>
+        <div class="col-3 date">@post.DateOfCreation.ToShortDateString()</div>
+        @if (post.RepliesNumber == 1)
+        {
+            <div class="col-3 repliesNumber">@post.RepliesNumber Reply</div>
+        } else
+        {
+            <div class="col-3 repliesNumber">@post.RepliesNumber Replies</div>
+        }
+
+        @if (User.Identity.Name == post.Author)
+        {
+            <div class="col-3 author">
+                <span><a asp-action="Edit" asp-controller="Post" asp-route-postId="@post.Id" asp-route-themeId="@Model.ThemeId">Edit</a></span>
+                <span style="padding-left:5px"><a asp-action="Delete" asp-controller="Post" asp-route-postId="@post.Id" asp-route-themeId="@Model.ThemeId">Delete</a></span>
+            </div>
+        } else
+        {
+            <div class="col-3 author">@post.Author</div>
+        }
+    </div>*@
 }
