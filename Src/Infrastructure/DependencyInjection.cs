@@ -1,6 +1,6 @@
 ﻿using Discussor.Core.Application.Common.Contracts.Repositories;
+using Discussor.Core.Domain.Entities;
 using Discussor.Infrastructure.Contracts;
-using Discussor.Infrastructure.Identity;
 using Discussor.Infrastructure.Repositories;
 using Discussor.Infrastructure.Services;
 using DiscussorInfrastructure.Services;
@@ -27,7 +27,7 @@ namespace Discussor.Infrastructure
 
             services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
 
-            services.AddIdentity<User, IdentityRole>(options => {
+            services.AddIdentity<ApplicationUser, IdentityRole>(options => {
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;

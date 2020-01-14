@@ -8,9 +8,9 @@ namespace Discussor.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
-            builder.HasMany(c => c.Posts).WithOne();
-            builder.HasMany(c => c.Replies).WithOne();
-            builder.HasMany(c => c.Themes).WithOne();
+            builder.HasMany(c => c.Posts).WithOne(c => c.Creator);
+            builder.HasMany(c => c.Replies).WithOne(c => c.Creator);
+            builder.HasMany(c => c.Themes).WithOne(c => c.Creator);
         }
     }
 }

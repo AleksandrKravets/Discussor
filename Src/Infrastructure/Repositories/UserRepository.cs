@@ -53,7 +53,7 @@ namespace Discussor.Infrastructure.Repositories
             if (userToUpdate == null)
                 return false;
 
-            userToUpdate.NickName = user.NickName;
+           // userToUpdate.NickName = user.NickName;
 
             await _context.SaveChangesAsync();
 

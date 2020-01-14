@@ -1,5 +1,4 @@
 ﻿using Discussor.Core.Domain.Entities;
-using Discussor.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 

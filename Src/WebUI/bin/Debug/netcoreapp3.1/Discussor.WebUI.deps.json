@@ -2142,6 +2142,9 @@
         }
       },
       "Discussor.Core.Domain/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.0"
+        },
         "runtime": {
           "Discussor.Core.Domain.dll": {}
         },

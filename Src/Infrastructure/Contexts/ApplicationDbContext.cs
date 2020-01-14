@@ -3,12 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using Discussor.Core.Domain.Entities;
 using Discussor.Infrastructure.Contracts;
 using System.Threading.Tasks;
-using System.Linq;
-using Discussor.Infrastructure.Identity;
 
 namespace Infrastructure.Contexts
 {
-    internal class ApplicationDbContext : IdentityDbContext<User>, IApplicationDbContext
+    internal class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
     {
         public DbSet<Theme> Themes { get; set; }
         public DbSet<Post> Posts { get; set; }

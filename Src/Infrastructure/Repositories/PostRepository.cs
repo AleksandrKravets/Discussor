@@ -44,7 +44,9 @@ namespace Discussor.Infrastructure.Repositories
 
         public async Task<Post> GetPostById(int postId)
         {
-            return await _context.Posts.FindAsync(postId);
+            return await _context.Posts
+                .Include(p => p.Creator)
+                .FirstOrDefaultAsync(p => p.Id == postId);
         }
 
         public async Task<bool> Update(Post post)

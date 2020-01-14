@@ -30,7 +30,8 @@ namespace Discussor.Core.Application.Replies.Commands.CreateReply
             {
                 Content = request.Content,
                 PostId = request.PostId,
-                DateOfCreation = DateTime.Now
+                DateOfCreation = DateTime.Now,
+                CreatorId = request.CreatorId
             };
 
             return await _replyService.CreateAsync(reply);

@@ -28,7 +28,12 @@ namespace Discussor.Core.Application.Replies.Queries.GetReply
                 Id = reply.Id,
                 Content = reply.Content,
                 DateOfCreation = reply.DateOfCreation,
-                PostId = reply.PostId
+                PostId = reply.PostId,
+                Creator = new UserDto
+                {
+                    Id = reply.Id,
+                    NickName = reply.Creator.UserName
+                }
             };
 
             return result;

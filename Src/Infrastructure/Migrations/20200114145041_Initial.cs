@@ -8,18 +8,6 @@ namespace Discussor.Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ApplicationUsers",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    NickName = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ApplicationUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -51,48 +39,11 @@ namespace Discussor.Infrastructure.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false),
-                    ApplicationUserId = table.Column<string>(nullable: true)
+                    AccessFailedCount = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AspNetUsers_ApplicationUsers_ApplicationUserId",
-                        column: x => x.ApplicationUserId,
-                        principalTable: "ApplicationUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Themes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(maxLength: 150, nullable: false),
-                    DateOfCreation = table.Column<DateTime>(nullable: false),
-                    Image = table.Column<byte[]>(type: "image", nullable: false),
-                    UserId = table.Column<string>(nullable: true),
-                    CreatorId = table.Column<string>(nullable: true),
-                    ApplicationUserId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Themes", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Themes_ApplicationUsers_ApplicationUserId",
-                        column: x => x.ApplicationUserId,
-                        principalTable: "ApplicationUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Themes_ApplicationUsers_CreatorId",
-                        column: x => x.CreatorId,
-                        principalTable: "ApplicationUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -202,6 +153,28 @@ namespace Discussor.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Themes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(maxLength: 150, nullable: false),
+                    DateOfCreation = table.Column<DateTime>(nullable: false),
+                    Image = table.Column<byte[]>(type: "image", nullable: false),
+                    CreatorId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Themes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Themes_AspNetUsers_CreatorId",
+                        column: x => x.CreatorId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Posts",
                 columns: table => new
                 {
@@ -211,23 +184,15 @@ namespace Discussor.Infrastructure.Migrations
                     Content = table.Column<string>(maxLength: 10000, nullable: false),
                     DateOfCreation = table.Column<DateTime>(nullable: false),
                     ThemeId = table.Column<int>(nullable: false),
-                    UserId = table.Column<string>(nullable: true),
-                    CreatorId = table.Column<string>(nullable: true),
-                    ApplicationUserId = table.Column<string>(nullable: true)
+                    CreatorId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Posts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Posts_ApplicationUsers_ApplicationUserId",
-                        column: x => x.ApplicationUserId,
-                        principalTable: "ApplicationUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Posts_ApplicationUsers_CreatorId",
+                        name: "FK_Posts_AspNetUsers_CreatorId",
                         column: x => x.CreatorId,
-                        principalTable: "ApplicationUsers",
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -247,23 +212,15 @@ namespace Discussor.Infrastructure.Migrations
                     Content = table.Column<string>(maxLength: 10000, nullable: false),
                     DateOfCreation = table.Column<DateTime>(nullable: false),
                     PostId = table.Column<int>(nullable: false),
-                    UserId = table.Column<string>(nullable: true),
-                    CreatorId = table.Column<string>(nullable: true),
-                    ApplicationUserId = table.Column<string>(nullable: true)
+                    CreatorId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PostReplies", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PostReplies_ApplicationUsers_ApplicationUserId",
-                        column: x => x.ApplicationUserId,
-                        principalTable: "ApplicationUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_PostReplies_ApplicationUsers_CreatorId",
+                        name: "FK_PostReplies_AspNetUsers_CreatorId",
                         column: x => x.CreatorId,
-                        principalTable: "ApplicationUsers",
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -302,11 +259,6 @@ namespace Discussor.Infrastructure.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_ApplicationUserId",
-                table: "AspNetUsers",
-                column: "ApplicationUserId");
-
-            migrationBuilder.CreateIndex(
                 name: "EmailIndex",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
@@ -319,11 +271,6 @@ namespace Discussor.Infrastructure.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PostReplies_ApplicationUserId",
-                table: "PostReplies",
-                column: "ApplicationUserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_PostReplies_CreatorId",
                 table: "PostReplies",
                 column: "CreatorId");
@@ -334,11 +281,6 @@ namespace Discussor.Infrastructure.Migrations
                 column: "PostId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Posts_ApplicationUserId",
-                table: "Posts",
-                column: "ApplicationUserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Posts_CreatorId",
                 table: "Posts",
                 column: "CreatorId");
@@ -347,11 +289,6 @@ namespace Discussor.Infrastructure.Migrations
                 name: "IX_Posts_ThemeId",
                 table: "Posts",
                 column: "ThemeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Themes_ApplicationUserId",
-                table: "Themes",
-                column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Themes_CreatorId",
@@ -383,16 +320,13 @@ namespace Discussor.Infrastructure.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
                 name: "Posts");
 
             migrationBuilder.DropTable(
                 name: "Themes");
 
             migrationBuilder.DropTable(
-                name: "ApplicationUsers");
+                name: "AspNetUsers");
         }
     }
 }

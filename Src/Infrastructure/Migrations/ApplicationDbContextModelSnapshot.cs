@@ -24,142 +24,8 @@ namespace Discussor.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("NickName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ApplicationUsers");
-                });
-
-            modelBuilder.Entity("Discussor.Core.Domain.Entities.Post", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasMaxLength(10000);
-
-                    b.Property<string>("CreatorId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("DateOfCreation")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ThemeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(300)")
-                        .HasMaxLength(300);
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.HasIndex("CreatorId");
-
-                    b.HasIndex("ThemeId");
-
-                    b.ToTable("Posts");
-                });
-
-            modelBuilder.Entity("Discussor.Core.Domain.Entities.Reply", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasMaxLength(10000);
-
-                    b.Property<string>("CreatorId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("DateOfCreation")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("PostId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.HasIndex("CreatorId");
-
-                    b.HasIndex("PostId");
-
-                    b.ToTable("PostReplies");
-                });
-
-            modelBuilder.Entity("Discussor.Core.Domain.Entities.Theme", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CreatorId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("DateOfCreation")
-                        .HasColumnType("datetime2");
-
-                    b.Property<byte[]>("Image")
-                        .IsRequired()
-                        .HasColumnType("image");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(150)")
-                        .HasMaxLength(150);
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.HasIndex("CreatorId");
-
-                    b.ToTable("Themes");
-                });
-
-            modelBuilder.Entity("Discussor.Infrastructure.Identity.User", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
-
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -207,8 +73,6 @@ namespace Discussor.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
-
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
 
@@ -218,6 +82,100 @@ namespace Discussor.Infrastructure.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("Discussor.Core.Domain.Entities.Post", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasMaxLength(10000);
+
+                    b.Property<string>("CreatorId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("DateOfCreation")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ThemeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(300)")
+                        .HasMaxLength(300);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatorId");
+
+                    b.HasIndex("ThemeId");
+
+                    b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("Discussor.Core.Domain.Entities.Reply", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasMaxLength(10000);
+
+                    b.Property<string>("CreatorId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("DateOfCreation")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatorId");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("PostReplies");
+                });
+
+            modelBuilder.Entity("Discussor.Core.Domain.Entities.Theme", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatorId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("DateOfCreation")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("Image")
+                        .IsRequired()
+                        .HasColumnType("image");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatorId");
+
+                    b.ToTable("Themes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -353,12 +311,8 @@ namespace Discussor.Infrastructure.Migrations
 
             modelBuilder.Entity("Discussor.Core.Domain.Entities.Post", b =>
                 {
-                    b.HasOne("Discussor.Core.Domain.Entities.ApplicationUser", null)
-                        .WithMany("Posts")
-                        .HasForeignKey("ApplicationUserId");
-
                     b.HasOne("Discussor.Core.Domain.Entities.ApplicationUser", "Creator")
-                        .WithMany()
+                        .WithMany("Posts")
                         .HasForeignKey("CreatorId");
 
                     b.HasOne("Discussor.Core.Domain.Entities.Theme", "Theme")
@@ -370,12 +324,8 @@ namespace Discussor.Infrastructure.Migrations
 
             modelBuilder.Entity("Discussor.Core.Domain.Entities.Reply", b =>
                 {
-                    b.HasOne("Discussor.Core.Domain.Entities.ApplicationUser", null)
-                        .WithMany("Replies")
-                        .HasForeignKey("ApplicationUserId");
-
                     b.HasOne("Discussor.Core.Domain.Entities.ApplicationUser", "Creator")
-                        .WithMany()
+                        .WithMany("Replies")
                         .HasForeignKey("CreatorId");
 
                     b.HasOne("Discussor.Core.Domain.Entities.Post", "Post")
@@ -387,20 +337,9 @@ namespace Discussor.Infrastructure.Migrations
 
             modelBuilder.Entity("Discussor.Core.Domain.Entities.Theme", b =>
                 {
-                    b.HasOne("Discussor.Core.Domain.Entities.ApplicationUser", null)
-                        .WithMany("Themes")
-                        .HasForeignKey("ApplicationUserId");
-
                     b.HasOne("Discussor.Core.Domain.Entities.ApplicationUser", "Creator")
-                        .WithMany()
+                        .WithMany("Themes")
                         .HasForeignKey("CreatorId");
-                });
-
-            modelBuilder.Entity("Discussor.Infrastructure.Identity.User", b =>
-                {
-                    b.HasOne("Discussor.Core.Domain.Entities.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -414,7 +353,7 @@ namespace Discussor.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Discussor.Infrastructure.Identity.User", null)
+                    b.HasOne("Discussor.Core.Domain.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -423,7 +362,7 @@ namespace Discussor.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Discussor.Infrastructure.Identity.User", null)
+                    b.HasOne("Discussor.Core.Domain.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -438,7 +377,7 @@ namespace Discussor.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Discussor.Infrastructure.Identity.User", null)
+                    b.HasOne("Discussor.Core.Domain.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -447,7 +386,7 @@ namespace Discussor.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Discussor.Infrastructure.Identity.User", null)
+                    b.HasOne("Discussor.Core.Domain.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

@@ -8,7 +8,7 @@ namespace Discussor.Core.Domain.Entities
         public string Content { get; set; }
         public DateTime DateOfCreation { get; set; }
         public int PostId { get; set; }
-        public string UserId { get; set; }
+        public string CreatorId { get; set; }
 
         public virtual Post Post { get; set; }
         public virtual ApplicationUser Creator { get; set; }

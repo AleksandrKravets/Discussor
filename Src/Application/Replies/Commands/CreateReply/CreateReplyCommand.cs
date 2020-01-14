@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Discussor.Core.Domain.Entities;
+using MediatR;
 
 namespace Discussor.Core.Application.Replies.Commands.CreateReply
 {
@@ -6,5 +7,6 @@ namespace Discussor.Core.Application.Replies.Commands.CreateReply
     {
         public string Content { get; set; }
         public int PostId { get; set; }
+        public string CreatorId { get; set; }
     }
 }

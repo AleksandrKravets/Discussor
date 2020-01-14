@@ -26,12 +26,14 @@ namespace Discussor.Core.Application.Posts.Commands.CreatePost
             if (theme == null)
                 throw new NotFoundException(nameof(Theme), request.ThemeId);
 
+            // проверка на наличие создателя в базе
             var post = new Post
             {
                 Title = request.Title,
                 Content = request.Content,
                 ThemeId = request.ThemeId,
                 DateOfCreation = DateTime.Now,
+                CreatorId = request.CreatorId
             };
 
             return await _postService.CreateAsync(post);

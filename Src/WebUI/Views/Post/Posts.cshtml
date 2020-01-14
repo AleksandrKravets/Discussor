@@ -2,12 +2,17 @@
 
 <link href="~/css/Index.css" rel="stylesheet" />
 
-<div class="col-12 btn-create-theme text-light">
-    <a class="btn btn-primary btn-lg" asp-action="Create" asp-controller="Post" asp-route-themeId="@Model.ThemeId">
-        Create new Post
-    </a>
-</div>
 
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="col-12 btn-create-theme text-light">
+        <a class="btn btn-primary btn-lg" asp-action="Create" asp-controller="Post" asp-route-themeId="@Model.ThemeId">
+            Create new Post
+        </a>
+    </div>
+}
 
 @foreach (var post in Model.Posts)
 {
@@ -24,7 +29,7 @@
                 </p>
             </div>
             <div class="col-10 theme-block-content">
-                
+
                 @*<div class="col-9 theme-title"><a asp-action="Posts" asp-controller="Post" asp-route-themeId="@theme.Id">@theme.Title</a></div>*@
             </div>
         </div>

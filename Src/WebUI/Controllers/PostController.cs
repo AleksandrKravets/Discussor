@@ -3,7 +3,7 @@ using Discussor.Core.Application.Posts.Commands.DeletePost;
 using Discussor.Core.Application.Posts.Commands.UpdatePost;
 using Discussor.Core.Application.Posts.Queries.GetPost;
 using Discussor.Core.Application.Posts.Queries.GetPostsList;
-using Discussor.Infrastructure.Identity;
+using Discussor.Core.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,9 +13,9 @@ namespace Discussor.WebUI.Controllers
 {
     public class PostController : BaseController
     {
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public PostController(UserManager<User> userManager)
+        public PostController(UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
         }
@@ -45,6 +45,8 @@ namespace Discussor.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
+                var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+                command.CreatorId = currentUser.Id;
                 await Mediator.Send(command);
                 return RedirectToAction("Posts", new { themeId = command.ThemeId });
             }

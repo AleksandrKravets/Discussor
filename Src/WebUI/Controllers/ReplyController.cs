@@ -2,6 +2,8 @@
 using Discussor.Core.Application.Replies.Commands.DeleteReply;
 using Discussor.Core.Application.Replies.Commands.UpdateReply;
 using Discussor.Core.Application.Replies.Queries.GetReply;
+using Discussor.Core.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -9,6 +11,13 @@ namespace Discussor.WebUI.Controllers
 {
     public class ReplyController : BaseController
     {
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public ReplyController(UserManager<ApplicationUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
         [HttpGet]
         public IActionResult Reply(int postId)
         {
@@ -20,6 +29,8 @@ namespace Discussor.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
+                var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+                command.CreatorId = currentUser.Id;
                 await Mediator.Send(command);
                 return RedirectToAction("Post", "Post", new { postId = command.PostId });
             }

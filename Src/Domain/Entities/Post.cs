@@ -10,7 +10,7 @@ namespace Discussor.Core.Domain.Entities
         public string Content { get; set; }
         public DateTime DateOfCreation { get; set; }
         public int ThemeId { get; set; }
-        public string UserId { get; set; }
+        public string CreatorId { get; set; }
 
         public virtual ICollection<Reply> Replies { get; set; }
         public virtual Theme Theme { get; set; }

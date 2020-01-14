@@ -1391,11 +1391,17 @@
         },
         "runtime": {
           "bin/placeholder/Discussor.Core.Application.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Discussor.Core.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.0"
+        },
         "compile": {
           "bin/placeholder/Discussor.Core.Domain.dll": {}
         },
@@ -5270,6 +5276,9 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
