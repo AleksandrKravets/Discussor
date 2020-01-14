@@ -39,7 +39,7 @@ namespace Discussor.WebUI
 
             app.UseStaticFiles();
 
-            app.UseRouting();
+            app.UseRouting();    
 
             app.UseAuthentication();
             app.UseAuthorization();

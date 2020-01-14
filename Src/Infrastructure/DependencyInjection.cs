@@ -46,6 +46,7 @@ namespace Discussor.Infrastructure
 
                 options.LoginPath = "/Account/Login";
                 options.AccessDeniedPath = "/Home/Index";
+
             });
 
             services.AddTransient<IEmailSender, EmailSender>(i =>

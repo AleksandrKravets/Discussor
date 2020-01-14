@@ -35,12 +35,14 @@ namespace Discussor.WebUI.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Create(int themeId)
         {
             return View(new CreatePostCommand { ThemeId = themeId });
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(CreatePostCommand command)
         {
             if (ModelState.IsValid)
