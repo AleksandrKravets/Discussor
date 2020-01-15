@@ -1,72 +1,39 @@
 ﻿@model Discussor.Core.Application.Posts.Queries.GetPostsList.PostsListViewModel
 
-<link href="~/css/Index.css" rel="stylesheet" />
-
-
-@*<div class="container messageContainer">
-        @if (TempData["Message"] != null)
-        {
-            <div class="alert alert-danger">
-                @TempData["Message"].
-                <a asp-action="ResendEmail" asp-controller="Account"> Resend.</a>
-            </div>
-        }
-    </div>*@
-
+<link href="~/css/Posts.css" rel="stylesheet" />
 
 @if (User.Identity.IsAuthenticated)
 {
-    <div class="col-12 btn-create-theme text-light">
-        <a class="btn btn-primary btn-lg" asp-action="Create" asp-controller="Post" asp-route-themeId="@Model.ThemeId">
+    <div class="col-12 btn-create-post text-light">
+        <a class="btn btn-primary btn-lg create-post-btn" asp-action="Create" asp-controller="Post" asp-route-themeId="@Model.ThemeId">
             Create new Post
         </a>
     </div>
 }
 
-@foreach (var post in Model.Posts)
+@if (Model.Posts.Count() == 0 && User.Identity.IsAuthenticated)
 {
-    <div class="container content text-light">
-        <div class="col-12 theme">
-            <div class="col-2 theme-image-block">
-                <p>
+    <div class="container message-container text-light">
+        <h1>There are no posts. You can leave one ^_^</h1>
+    </div>
+} else
+{
+    @foreach (var post in Model.Posts)
+    {
+        <div class="container content text-light">
+            <div class="row post">
+                <div class="col-5 post-title">
                     <a asp-action="Post" asp-controller="Post" asp-route-postId="@post.Id">
                         @post.Title
                     </a>
-                </p>
-                <p>
-                    @post.DateOfCreation
-                </p>
-            </div>
-            <div class="col-10 theme-block-content">
-
-                @*<div class="col-9 theme-title"><a asp-action="Posts" asp-controller="Post" asp-route-themeId="@theme.Id">@theme.Title</a></div>*@
+                </div>
+                <div class="col">
+                    @post.DateOfCreation.ToShortDateString()
+                </div>
+                <div class="col-2">
+                    @post.Creator.NickName
+                </div>
             </div>
         </div>
-    </div>
-
-
-
-
-    @*<div class="row post">
-        <div class="col-3 title"><a asp-action="Post" asp-controller="Post" asp-route-postId="@post.Id">@post.Title</a></div>
-        <div class="col-3 date">@post.DateOfCreation.ToShortDateString()</div>
-        @if (post.RepliesNumber == 1)
-        {
-            <div class="col-3 repliesNumber">@post.RepliesNumber Reply</div>
-        } else
-        {
-            <div class="col-3 repliesNumber">@post.RepliesNumber Replies</div>
-        }
-
-        @if (User.Identity.Name == post.Author)
-        {
-            <div class="col-3 author">
-                <span><a asp-action="Edit" asp-controller="Post" asp-route-postId="@post.Id" asp-route-themeId="@Model.ThemeId">Edit</a></span>
-                <span style="padding-left:5px"><a asp-action="Delete" asp-controller="Post" asp-route-postId="@post.Id" asp-route-themeId="@Model.ThemeId">Delete</a></span>
-            </div>
-        } else
-        {
-            <div class="col-3 author">@post.Author</div>
-        }
-    </div>*@
+    }
 }

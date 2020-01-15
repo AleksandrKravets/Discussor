@@ -1,84 +1,6 @@
 ﻿@model Discussor.Core.Application.Posts.Queries.GetPost.PostViewModel
 
-<style>
-
-    .postsContainer {
-        max-width: 55%;
-        margin-bottom: 30px;
-    }
-
-    .post {
-        background: rgba(194,210,233,0.3);
-        border: 1px solid;
-        border-radius: 10px;
-        padding: 15px;
-    }
-
-    .postDate {
-        text-align: right;
-    }
-
-    .postAuthor {
-        text-align: right;
-        padding-right: 20px;
-        font-weight: bold;
-    }
-
-    .postContent {
-        padding: 20px;
-    }
-
-    .postTitle {
-        font-weight: bold;
-    }
-
-    .repliesContainer {
-        max-width: 40%;
-    }
-
-    .reply {
-        background: rgba(194,210,233,0.3);
-        border: 1px solid;
-        border-radius: 10px;
-        padding: 15px;
-        margin-bottom: 25px;
-    }
-
-    .replyAuthor {
-        text-align: left;
-        padding-left: 20px;
-        font-weight: bold;
-    }
-
-    .replyContent {
-        padding: 20px;
-    }
-
-    .replyDate {
-        text-align: right;
-    }
-
-    .btnContainer {
-        max-width: 55%;
-        margin-bottom: 30px;
-    }
-
-    .messageContainer {
-        max-width: 40%;
-        text-align: center;
-    }
-</style>
-
-@*<div class="container messageContainer">
-    @if (TempData["Message"] != null)
-    {
-        <div class="alert alert-danger">
-            @TempData["Message"].
-            <a asp-action="ResendEmail" asp-controller="Account"> Resend.</a>
-        </div>
-    }
-</div>*@
-
+<link href="~/css/Post.css" rel="stylesheet" />
 
 <div class="container postsContainer">
     <div class="post">
@@ -121,7 +43,7 @@
     <div class="container btnContainer">
         <div class="row">
             <div class="col-12" style="text-align: center;">
-                <a class="btn btn-outline-primary" asp-action="Reply" asp-controller="Reply" asp-route-postId="@Model.Id">
+                <a class="btn btn-primary" asp-action="Reply" asp-controller="Reply" asp-route-postId="@Model.Id">
                     Reply
                 </a>
             </div>

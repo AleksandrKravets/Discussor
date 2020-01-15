@@ -71,7 +71,8 @@ namespace Discussor.WebUI.Controllers
             {
                 PostId = postId,
                 Content = post.Content,
-                Title = post.Title
+                Title = post.Title,
+                ThemeId = post.ThemeId
             });
         }
 
@@ -83,7 +84,7 @@ namespace Discussor.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 await Mediator.Send(command);
-                return RedirectToAction("Posts", "Post", new { themeId = command.ThemeId });
+                return RedirectToAction("Posts", "Post", new { command.ThemeId });
             }
 
             ModelState.AddModelError("", "The entered data is incorrect");

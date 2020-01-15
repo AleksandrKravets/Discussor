@@ -22,7 +22,8 @@ namespace Discussor.Core.Application.Themes.Commands.CreateTheme
             {
                 Title = request.Title,
                 Image = request.Image,
-                DateOfCreation = DateTime.Now
+                DateOfCreation = DateTime.Now,
+                CreatorId = request.CreatorId
             };
 
             return await _themeService.CreateAsync(theme);

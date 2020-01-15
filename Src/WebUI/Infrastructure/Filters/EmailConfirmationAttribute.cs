@@ -18,8 +18,11 @@ namespace Discussor.WebUI.Infrastructure.Filters
 
             var user = await _userManager.GetUserAsync(context.HttpContext.User);
 
-            if (!user.EmailConfirmed)
-                context.Result = new ViewResult() { ViewName = "EmailConfirmationErrorPage" };
+            if(user == null)
+                context.Result = new RedirectToActionResult("Login", "Account", new { area = "Account" });
+            else
+                if (!user.EmailConfirmed)
+                    context.Result = new ViewResult() { ViewName = "EmailConfirmationErrorPage" };
         }
     }
 }

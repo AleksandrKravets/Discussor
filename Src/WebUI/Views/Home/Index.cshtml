@@ -2,12 +2,6 @@
 
 <link href="~/css/Index.css" rel="stylesheet" />
 
-<style>
-    .message-container {
-        text-align: center;
-    }
-</style>
-
 <div class="container messageContainer">
     @if (TempData["Message"] != null)
     {
@@ -28,13 +22,13 @@
     @foreach (var theme in Model.Themes)
     {
         <div class="container content text-light">
-            <div class="col-12 theme">
+            <div class="row theme">
                 <div class="col-2 theme-image-block">
-                    <img class="theme-image" src="@string.Format("data:image/png;base64,{0}", Convert.ToBase64String(theme.Image))">
+                   <img class="theme-image" src="@string.Format("data:image/png;base64,{0}", Convert.ToBase64String(theme.Image))">
                 </div>
-                <div class="col-10 theme-block-content">
-                    <div class="col-9 theme-title"><a asp-action="Posts" asp-controller="Post" asp-route-themeId="@theme.Id">@theme.Title</a></div>
-                    <div class="col-3 theme-replies-number">Posts: @theme.PostsNumber</div>
+                <div class="col theme-block-content">
+                    <div class="col-9" style="padding:7px;"><a asp-action="Posts" asp-controller="Post" asp-route-themeId="@theme.Id">@theme.Title</a></div>
+                    <div class="col-3" style="padding:7px;">Posts: @theme.PostsNumber</div>
                 </div>
             </div>
         </div>
@@ -49,3 +43,13 @@
         </a>
     </div>
 }
+
+@*<div class="col-12 theme">
+    <div class="col-2 theme-image-block">
+        <img class="theme-image" src="@string.Format("data:image/png;base64,{0}", Convert.ToBase64String(theme.Image))">
+    </div>
+    <div class="col-10 theme-block-content">
+        <div class="col-9 theme-title"><a asp-action="Posts" asp-controller="Post" asp-route-themeId="@theme.Id">@theme.Title</a></div>
+        <div class="col-3 theme-replies-number">Posts: @theme.PostsNumber</div>
+    </div>
+</div>*@

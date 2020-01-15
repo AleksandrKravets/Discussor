@@ -6,5 +6,6 @@ namespace Discussor.Core.Application.Themes.Commands.CreateTheme
     {
         public string Title { get; set; }
         public byte[] Image { get; set; }
+        public string CreatorId { get; set; }
     }
 }

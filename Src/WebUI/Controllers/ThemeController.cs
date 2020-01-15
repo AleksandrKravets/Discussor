@@ -36,10 +36,13 @@ namespace Discussor.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
+                var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+
                 await Mediator.Send(new CreateThemeCommand
                 {
                     Title = model.Title,
-                    Image = _imageConverter.ConvertToByteArray(model.Image)
+                    Image = _imageConverter.ConvertToByteArray(model.Image),
+                    CreatorId = currentUser.Id
                 });
 
                 return RedirectToAction("Index", "Home");

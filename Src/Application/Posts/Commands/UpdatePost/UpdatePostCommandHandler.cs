@@ -22,7 +22,6 @@ namespace Discussor.Core.Application.Posts.Commands.UpdatePost
                 Id = request.PostId,
                 Content = request.Content,
                 Title = request.Title,
-                ThemeId = request.ThemeId
             }; 
             
             return await _postService.UpdateAsync(post);
