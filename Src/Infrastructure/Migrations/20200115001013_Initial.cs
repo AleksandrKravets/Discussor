@@ -161,7 +161,7 @@ namespace Discussor.Infrastructure.Migrations
                     Title = table.Column<string>(maxLength: 150, nullable: false),
                     DateOfCreation = table.Column<DateTime>(nullable: false),
                     Image = table.Column<byte[]>(type: "image", nullable: false),
-                    CreatorId = table.Column<string>(nullable: true)
+                    CreatorId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -170,8 +170,7 @@ namespace Discussor.Infrastructure.Migrations
                         name: "FK_Themes_AspNetUsers_CreatorId",
                         column: x => x.CreatorId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -184,7 +183,7 @@ namespace Discussor.Infrastructure.Migrations
                     Content = table.Column<string>(maxLength: 10000, nullable: false),
                     DateOfCreation = table.Column<DateTime>(nullable: false),
                     ThemeId = table.Column<int>(nullable: false),
-                    CreatorId = table.Column<string>(nullable: true)
+                    CreatorId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -193,8 +192,7 @@ namespace Discussor.Infrastructure.Migrations
                         name: "FK_Posts_AspNetUsers_CreatorId",
                         column: x => x.CreatorId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Posts_Themes_ThemeId",
                         column: x => x.ThemeId,
@@ -212,7 +210,7 @@ namespace Discussor.Infrastructure.Migrations
                     Content = table.Column<string>(maxLength: 10000, nullable: false),
                     DateOfCreation = table.Column<DateTime>(nullable: false),
                     PostId = table.Column<int>(nullable: false),
-                    CreatorId = table.Column<string>(nullable: true)
+                    CreatorId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -221,8 +219,7 @@ namespace Discussor.Infrastructure.Migrations
                         name: "FK_PostReplies_AspNetUsers_CreatorId",
                         column: x => x.CreatorId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_PostReplies_Posts_PostId",
                         column: x => x.PostId,

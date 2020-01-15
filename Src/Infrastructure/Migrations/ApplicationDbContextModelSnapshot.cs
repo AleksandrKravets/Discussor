@@ -97,6 +97,7 @@ namespace Discussor.Infrastructure.Migrations
                         .HasMaxLength(10000);
 
                     b.Property<string>("CreatorId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("DateOfCreation")
@@ -132,6 +133,7 @@ namespace Discussor.Infrastructure.Migrations
                         .HasMaxLength(10000);
 
                     b.Property<string>("CreatorId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("DateOfCreation")
@@ -157,6 +159,7 @@ namespace Discussor.Infrastructure.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CreatorId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("DateOfCreation")
@@ -313,7 +316,9 @@ namespace Discussor.Infrastructure.Migrations
                 {
                     b.HasOne("Discussor.Core.Domain.Entities.ApplicationUser", "Creator")
                         .WithMany("Posts")
-                        .HasForeignKey("CreatorId");
+                        .HasForeignKey("CreatorId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.HasOne("Discussor.Core.Domain.Entities.Theme", "Theme")
                         .WithMany("Posts")
@@ -326,7 +331,9 @@ namespace Discussor.Infrastructure.Migrations
                 {
                     b.HasOne("Discussor.Core.Domain.Entities.ApplicationUser", "Creator")
                         .WithMany("Replies")
-                        .HasForeignKey("CreatorId");
+                        .HasForeignKey("CreatorId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.HasOne("Discussor.Core.Domain.Entities.Post", "Post")
                         .WithMany("Replies")
@@ -339,7 +346,9 @@ namespace Discussor.Infrastructure.Migrations
                 {
                     b.HasOne("Discussor.Core.Domain.Entities.ApplicationUser", "Creator")
                         .WithMany("Themes")
-                        .HasForeignKey("CreatorId");
+                        .HasForeignKey("CreatorId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
