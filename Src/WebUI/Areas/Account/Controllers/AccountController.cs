@@ -37,9 +37,9 @@ namespace Discussor.WebUI.Areas.Account.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, Request.Scheme);
-                    //await _emailSender.SendEmailAsync(user.Email, "Account Confirmation", "<p>Confirm your account</p><br />  " + confirmationLink);
+                    var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, Request.Scheme);
+                    await _emailSender.SendEmailAsync(user.Email, "Account Confirmation", "<p>Confirm your account</p><br />  " + confirmationLink);
                     await _signInManager.SignInAsync(user, false);
                     return RedirectToRoute("default", new { action = "Index", controller = "Home" });
                 } else

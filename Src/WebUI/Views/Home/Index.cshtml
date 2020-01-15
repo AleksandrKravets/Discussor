@@ -2,6 +2,12 @@
 
 <link href="~/css/Index.css" rel="stylesheet" />
 
+<style>
+    .message-container {
+        text-align: center;
+    }
+</style>
+
 <div class="container messageContainer">
     @if (TempData["Message"] != null)
     {
@@ -14,7 +20,7 @@
 
 @if (Model.Themes.Count() == 0 && User.Identity.IsAuthenticated)
 {
-    <div class="container messageContainer">
+    <div class="container message-container text-light">
         <h1>There are no themes. You can leave one ^_^</h1>
     </div>
 } else

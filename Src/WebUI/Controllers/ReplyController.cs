@@ -3,6 +3,7 @@ using Discussor.Core.Application.Replies.Commands.DeleteReply;
 using Discussor.Core.Application.Replies.Commands.UpdateReply;
 using Discussor.Core.Application.Replies.Queries.GetReply;
 using Discussor.Core.Domain.Entities;
+using Discussor.WebUI.Infrastructure.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 namespace Discussor.WebUI.Controllers
 {
     [Authorize]
+    [EmailConfirmation]
     public class ReplyController : BaseController
     {
         private readonly UserManager<ApplicationUser> _userManager;

@@ -4,6 +4,7 @@ using Discussor.Core.Application.Posts.Commands.UpdatePost;
 using Discussor.Core.Application.Posts.Queries.GetPost;
 using Discussor.Core.Application.Posts.Queries.GetPostsList;
 using Discussor.Core.Domain.Entities;
+using Discussor.WebUI.Infrastructure.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -36,6 +37,7 @@ namespace Discussor.WebUI.Controllers
 
         [HttpGet]
         [Authorize]
+        [EmailConfirmation]
         public IActionResult Create(int themeId)
         {
             return View(new CreatePostCommand { ThemeId = themeId });
@@ -43,6 +45,7 @@ namespace Discussor.WebUI.Controllers
 
         [HttpPost]
         [Authorize]
+        [EmailConfirmation]
         public async Task<IActionResult> Create(CreatePostCommand command)
         {
             if (ModelState.IsValid)
@@ -59,6 +62,7 @@ namespace Discussor.WebUI.Controllers
 
         [HttpGet]
         [Authorize]
+        [EmailConfirmation]
         public async Task<IActionResult> Edit(int postId)
         {
             var post = await Mediator.Send(new GetPostQuery { PostId = postId });
@@ -73,6 +77,7 @@ namespace Discussor.WebUI.Controllers
 
         [HttpPost]
         [Authorize]
+        [EmailConfirmation]
         public async Task<IActionResult> Edit(UpdatePostCommand command)
         {
             if (ModelState.IsValid)
@@ -86,6 +91,7 @@ namespace Discussor.WebUI.Controllers
         }
 
         [Authorize]
+        [EmailConfirmation]
         public async Task<IActionResult> Delete(int postId, int themeId)
         {
             await Mediator.Send(new DeletePostCommand { PostId = postId });

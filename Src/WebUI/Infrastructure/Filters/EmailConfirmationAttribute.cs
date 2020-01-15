@@ -19,7 +19,7 @@ namespace Discussor.WebUI.Infrastructure.Filters
             var user = await _userManager.GetUserAsync(context.HttpContext.User);
 
             if (!user.EmailConfirmed)
-                context.Result = new RedirectToActionResult("EmailConfirmationErrorPage", "Shared", null);
+                context.Result = new ViewResult() { ViewName = "EmailConfirmationErrorPage" };
         }
     }
 }

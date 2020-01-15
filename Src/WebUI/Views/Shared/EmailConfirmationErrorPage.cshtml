@@ -1,7 +1,17 @@
-﻿
-@{
-    ViewData["Title"] = "EmailConfirmationErrorPage";
-}
+﻿<style>
+    .error {
+        text-align: center;
+    }
 
-<h1>EmailConfirmationErrorPage</h1>
+    .back-to-themes-btn {
+        margin-top: 25px;
+    }
+</style>
+
+<div class="container text-light error">
+    <h1>Confirm your email!</h1>
+    <a class="btn btn-primary btn-lg back-to-themes-btn" asp-action="Index" asp-controller="Home">
+        Back to themes
+    </a>
+</div>
 
