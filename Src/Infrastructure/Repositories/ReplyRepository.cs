@@ -19,6 +19,7 @@ namespace Discussor.Infrastructure.Repositories
 
         public async Task<int> Create(Reply reply)
         {
+            reply.Id = 0;
             await _context.PostReplies.AddAsync(reply);
             await _context.SaveChangesAsync();
             return reply.Id;
@@ -26,12 +27,12 @@ namespace Discussor.Infrastructure.Repositories
 
         public async Task<bool> Delete(int replyId)
         {
-            var reply = await _context.PostReplies.FindAsync(replyId);
+            //var reply = await _context.PostReplies.FindAsync(replyId);
 
-            if (reply == null)
-                return false;
+            //if (reply == null)
+            //    return false;
 
-            _context.PostReplies.Remove(reply);
+            _context.PostReplies.Remove(new Reply { Id = replyId });
             await _context.SaveChangesAsync();
 
             return true;

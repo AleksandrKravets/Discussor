@@ -19,6 +19,7 @@ namespace Discussor.Infrastructure.Repositories
 
         public async Task<int> Create(Theme theme)
         {
+            theme.Id = 0;
             await _context.Themes.AddAsync(theme);
             await _context.SaveChangesAsync();
             return theme.Id;
@@ -26,12 +27,12 @@ namespace Discussor.Infrastructure.Repositories
 
         public async Task<bool> Delete(int themeId)
         {
-            var theme = await _context.Themes.FindAsync(themeId);
+            //var theme = await _context.Themes.FindAsync(themeId);
 
-            if (theme == null)
-                return false;
+            //if (theme == null)
+            //    return false;
 
-            _context.Themes.Remove(theme);
+            _context.Themes.Remove(new Theme { Id = themeId });
             await _context.SaveChangesAsync();
 
             return true;
