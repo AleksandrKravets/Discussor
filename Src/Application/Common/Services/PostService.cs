@@ -28,7 +28,9 @@ namespace Discussor.Core.Application.Common.Services
 
         public IEnumerable<Post> GetAllPosts()
         {
-            return _postRepository.GetAllPosts().ToList();
+            return _postRepository.GetAllPosts()
+                .OrderByDescending(post => post.DateOfCreation)
+                .ToList();
         }
 
         public async Task<Post> GetPostByIdAsync(int postId)
@@ -40,6 +42,7 @@ namespace Discussor.Core.Application.Common.Services
         {
             return _postRepository.GetAllPosts()
                             .Where(post => post.ThemeId == themeId)
+                            .OrderByDescending(post => post.DateOfCreation)
                             .ToList();
         }
 
@@ -52,6 +55,7 @@ namespace Discussor.Core.Application.Common.Services
         {
             return _postRepository.GetAllPosts()
                 .Where(p => p.ThemeId == themeId)
+                .OrderByDescending(post => post.DateOfCreation)
                 .Skip(pageSize * (pageNumber - 1))
                 .Take(pageSize)
                 .ToList();

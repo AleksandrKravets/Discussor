@@ -28,7 +28,9 @@ namespace Discussor.Core.Application.Common.Services
 
         public IEnumerable<Theme> GetAllThemes()
         {
-            return _themeRepository.GetAllThemes().ToList();
+            return _themeRepository.GetAllThemes()
+                .OrderByDescending(theme => theme.DateOfCreation)
+                .ToList();
         }
 
         public async Task<Theme> GetThemeByIdAsync(int themeId)
@@ -44,6 +46,7 @@ namespace Discussor.Core.Application.Common.Services
         public IEnumerable<Theme> GetThemesByPageNumber(int pageNumber, int pageSize)
         {
             return _themeRepository.GetAllThemes()
+                .OrderByDescending(theme => theme.DateOfCreation)
                 .Skip(pageSize * (pageNumber - 1))
                 .Take(pageSize)
                 .ToList();

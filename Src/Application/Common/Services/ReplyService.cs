@@ -28,13 +28,16 @@ namespace Discussor.Core.Application.Common.Services
 
         public IEnumerable<Reply> GetAllReplies()
         {
-            return _replyRepository.GetAllReplies().ToList();
+            return _replyRepository.GetAllReplies()
+                .OrderByDescending(reply => reply.DateOfCreation)
+                .ToList();
         }
 
         public IEnumerable<Reply> GetRepliesByPostId(int postId)
         {
             return _replyRepository.GetAllReplies()
                 .Where(reply => reply.PostId == postId)
+                .OrderByDescending(reply => reply.DateOfCreation)
                 .ToList();
         }
 
@@ -52,6 +55,7 @@ namespace Discussor.Core.Application.Common.Services
         {
             return _replyRepository.GetAllReplies()
                 .Where(r => r.PostId == postId)
+                .OrderByDescending(reply => reply.DateOfCreation)
                 .Skip(pageSize * (pageNumber - 1))
                 .Take(pageSize)
                 .ToList();
