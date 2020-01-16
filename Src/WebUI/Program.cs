@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Discussor.WebUI
 {
@@ -13,8 +14,8 @@ namespace Discussor.WebUI
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
-            // CreateHostBuilder(args).Build().Seed().Run();
+            //CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().Seed().Result.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -26,7 +27,7 @@ namespace Discussor.WebUI
 
     public static class DatabaseSeedInitializer
     {
-        public static IHost Seed(this IHost host)
+        public async static Task<IHost> Seed(this IHost host)
         {
             using (var scope = host.Services.CreateScope())
             {
@@ -49,18 +50,14 @@ namespace Discussor.WebUI
                         };
 
                         context.ApplicationUsers.Add(user);
-                        context.SaveChangesAsync();
-
                         var hasher = new PasswordHasher<ApplicationUser>();
                         var hashedPassword = hasher.HashPassword(user, "TestAccount");
                         user.PasswordHash = hashedPassword;
 
-                        context.SaveChangesAsync();
+                        await context.SaveChangesAsync();
                     }
-
-                } catch (Exception ex)
+                } catch (Exception)
                 {
-
                 }
             }
             return host;
