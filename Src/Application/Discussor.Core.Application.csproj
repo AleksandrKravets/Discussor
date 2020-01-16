@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Themes\Commands\UpdateTheme\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Domain\Discussor.Core.Domain.csproj" />
   </ItemGroup>
 

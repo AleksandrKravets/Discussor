@@ -7,7 +7,7 @@
     <form method="post">
         <div asp-validation-summary="ModelOnly"></div>
         <div class="form-group">
-            <label asp-for="Content"></label><br />
+            @*<label asp-for="Content"></label><br />*@
             <textarea rows="7" asp-for="Content" class="form-control"></textarea>
             <span asp-validation-for="Content"></span>
         </div>

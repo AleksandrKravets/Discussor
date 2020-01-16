@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Discussor.Core.Application;
 using Discussor.Infrastructure;
-using Discussor.WebUI.Infrastructure.Filters;
 
 namespace Discussor.WebUI
 {
