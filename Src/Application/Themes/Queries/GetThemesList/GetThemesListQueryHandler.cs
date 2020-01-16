@@ -17,7 +17,7 @@ namespace Discussor.Core.Application.Themes.Queries.GetThemesList
 
         public async Task<ThemesListViewModel> Handle(GetThemesListQuery request, CancellationToken cancellationToken)
         {
-            var themes = _themeService.GetAllThemes()
+            var themes = _themeService.GetThemesByPageNumber(request.PageNumber, request.PageSize)
                 .Select(theme => new ThemeDto
                 {
                     Id = theme.Id,
@@ -29,7 +29,8 @@ namespace Discussor.Core.Application.Themes.Queries.GetThemesList
 
             var themesList = new ThemesListViewModel
             {
-                Themes = themes
+                Themes = themes,
+                NumberOfAllThemes = _themeService.GetThemesNumber()
             };
 
             return themesList;

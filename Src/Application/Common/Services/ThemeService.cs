@@ -40,5 +40,18 @@ namespace Discussor.Core.Application.Common.Services
         {
             return await _themeRepository.Update(theme);
         }
+
+        public IEnumerable<Theme> GetThemesByPageNumber(int pageNumber, int pageSize)
+        {
+            return _themeRepository.GetAllThemes()
+                .Skip(pageSize * (pageNumber - 1))
+                .Take(pageSize)
+                .ToList();
+        }
+
+        public int GetThemesNumber()
+        {
+            return _themeRepository.GetAllThemes().Count();
+        }
     }
 }

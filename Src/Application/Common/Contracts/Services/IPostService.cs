@@ -12,5 +12,7 @@ namespace Discussor.Core.Application.Common.Contracts.Services
         Task<bool> UpdateAsync(Post post);
         Task<bool> DeleteAsync(int postId);
         IEnumerable<Post> GetPostsByThemeId(int themeId);
+        IEnumerable<Post> GetPostsByThemeId(int themeId, int pageNumber, int pageSize = 7);
+        int GetPostsNumberByThemeId(int themeId);
     }
 }

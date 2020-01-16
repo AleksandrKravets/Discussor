@@ -22,10 +22,8 @@ namespace Discussor.WebUI
         {
             services.AddApplication();
             services.AddInfrastructure(Configuration);
-            services.AddControllersWithViews(config => 
-            {
-                //config.Filters.Add(new EmailConfirmationAttribute());  
-            });
+            services.AddControllersWithViews();
+            services.AddCloudscribePagination();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

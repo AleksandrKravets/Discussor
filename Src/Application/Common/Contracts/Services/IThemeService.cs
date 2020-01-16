@@ -11,5 +11,7 @@ namespace Discussor.Core.Application.Common.Contracts.Services
         IEnumerable<Theme> GetAllThemes();
         Task<bool> UpdateAsync(Theme theme);
         Task<bool> DeleteAsync(int themeId);
+        IEnumerable<Theme> GetThemesByPageNumber(int pageNumber, int pageSize = 7);
+        int GetThemesNumber();
     }
 }

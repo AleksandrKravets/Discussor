@@ -71,3 +71,8 @@
     max-width: 40%;
     text-align: center;
 }
+
+.pager {
+    margin-top: 20px;
+    margin-left: 40%;
+}

@@ -19,8 +19,15 @@ using Discussor.WebUI.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\Views\_ViewImports.cshtml"
+using Discussor.WebUI.Infrastructure.Pagination;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c3333c1bbb2c2dde42724098b985a0dc0e7fb9a3", @"/Views/Shared/_Layout.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1bd8a8af1013f688867e9fad86449c175fc4140f", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fdb73938f0887df230a9efa42409ebf94e37aa98", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__Layout : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("href", new global::Microsoft.AspNetCore.Html.HtmlString("~/css/Site.css"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -64,7 +71,7 @@ using Discussor.WebUI.Models;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("<!DOCTYPE html>\r\n<html lang=\"en\">\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c3333c1bbb2c2dde42724098b985a0dc0e7fb9a37639", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c3333c1bbb2c2dde42724098b985a0dc0e7fb9a37861", async() => {
                 WriteLiteral(@"
     <meta charset=""utf-8"" />
     <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"" />
@@ -74,7 +81,7 @@ using Discussor.WebUI.Models;
     <script src=""https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"" integrity=""sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"" crossorigin=""anonymous""></script>
     <script src=""https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"" integrity=""sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"" crossorigin=""anonymous""></script>
     ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "c3333c1bbb2c2dde42724098b985a0dc0e7fb9a38891", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "c3333c1bbb2c2dde42724098b985a0dc0e7fb9a39113", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -102,9 +109,9 @@ using Discussor.WebUI.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c3333c1bbb2c2dde42724098b985a0dc0e7fb9a310860", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c3333c1bbb2c2dde42724098b985a0dc0e7fb9a311082", async() => {
                 WriteLiteral("\r\n    <header>\r\n        <nav class=\"navbar navbar-expand-lg navbar-dark navigation\">\r\n            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c3333c1bbb2c2dde42724098b985a0dc0e7fb9a311221", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c3333c1bbb2c2dde42724098b985a0dc0e7fb9a311443", async() => {
                     WriteLiteral("\r\n                Discussor\r\n            ");
                 }
                 );
@@ -141,7 +148,7 @@ using Discussor.WebUI.Models;
 #line hidden
 #nullable disable
                 WriteLiteral(" ;)</span></div>\r\n                            <div class=\"login-panel-btn\" style=\"margin-left: 20px; margin-right: 15px;\">\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c3333c1bbb2c2dde42724098b985a0dc0e7fb9a313961", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c3333c1bbb2c2dde42724098b985a0dc0e7fb9a314183", async() => {
                     WriteLiteral("Log Out");
                 }
                 );
@@ -171,7 +178,7 @@ using Discussor.WebUI.Models;
 #line hidden
 #nullable disable
                 WriteLiteral("                            <div class=\"login-panel-btn\">\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c3333c1bbb2c2dde42724098b985a0dc0e7fb9a316095", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c3333c1bbb2c2dde42724098b985a0dc0e7fb9a316317", async() => {
                     WriteLiteral("Log In");
                 }
                 );
@@ -192,7 +199,7 @@ using Discussor.WebUI.Models;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                            </div>\r\n                            <div class=\"login-panel-btn\" style=\"margin-left: 20px; margin-right: 15px;\">\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c3333c1bbb2c2dde42724098b985a0dc0e7fb9a318010", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c3333c1bbb2c2dde42724098b985a0dc0e7fb9a318232", async() => {
                     WriteLiteral("Sign Up");
                 }
                 );

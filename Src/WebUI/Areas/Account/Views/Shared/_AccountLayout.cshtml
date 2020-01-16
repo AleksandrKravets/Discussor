@@ -13,7 +13,9 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark navigation">
-            <a class="navbar-brand site-title" href="#" style="margin-left: 15px;">Discussor</a>
+            <a asp-controller="Home" asp-action="Index" class="navbar-brand" style="margin-left: 15px;">
+                Discussor
+            </a>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
                 </ul>
@@ -40,24 +42,6 @@
             </div>
         </nav>
     </header>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark navigation">
-            <a class="navbar-brand" href="#" style="margin-left: 15px;">Discussor</a>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Something</a>
-                    </li>
-                </ul>
-                <div class="navbar-text">
-                    <div class="login-panel">
-                        
-
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
 
     <div>
         @RenderBody()
@@ -67,3 +51,10 @@
 
 </body>
 </html>
+
+
+
+
+
+        
+   

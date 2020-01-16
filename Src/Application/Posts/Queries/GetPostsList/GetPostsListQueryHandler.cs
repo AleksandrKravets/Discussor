@@ -26,8 +26,7 @@ namespace Discussor.Core.Application.Posts.Queries.GetPostsList
             if (theme == null)
                 throw new NotFoundException(nameof(Theme), request.ThemeId);
 
-            var posts = _postService.GetPostsByThemeId(request.ThemeId);
-                var  p = posts.Where(post => post.ThemeId == request.ThemeId)
+            var posts = _postService.GetPostsByThemeId(request.ThemeId, request.PageNumber, request.PageSize)
                 .Select(post => new PostDto
                 {
                     Id = post.Id,
@@ -40,13 +39,13 @@ namespace Discussor.Core.Application.Posts.Queries.GetPostsList
                         Id = post.Creator.Id,
                         NickName = post.Creator.UserName
                     }
-
                 }).ToList();
 
             var result = new PostsListViewModel
             {
-                Posts = p, //
-                ThemeId = request.ThemeId
+                Posts = posts,
+                ThemeId = request.ThemeId,
+                NumberOfAllPosts = _postService.GetPostsNumberByThemeId(request.ThemeId)
             };
 
             return result;

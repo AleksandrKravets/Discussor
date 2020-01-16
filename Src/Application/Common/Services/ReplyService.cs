@@ -47,5 +47,19 @@ namespace Discussor.Core.Application.Common.Services
         {
             return await _replyRepository.Update(reply);
         }
+
+        public IEnumerable<Reply> GetRepliesByPostId(int postId, int pageNumber, int pageSize)
+        {
+            return _replyRepository.GetAllReplies()
+                .Where(r => r.PostId == postId)
+                .Skip(pageSize * (pageNumber - 1))
+                .Take(pageSize)
+                .ToList();
+        }
+
+        public int GetRepliesNumberByPostId(int postId)
+        {
+            return _replyRepository.GetAllReplies().Where(reply => reply.PostId == postId).Count();
+        }
     }
 }

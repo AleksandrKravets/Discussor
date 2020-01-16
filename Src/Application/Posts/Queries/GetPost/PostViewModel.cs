@@ -13,5 +13,6 @@ namespace Discussor.Core.Application.Posts.Queries.GetPost
 
         public UserDto Creator { get; set; }
         public IEnumerable<ReplyDto> Replies { get; set; }
+        public int NumberOfAllReplies { get; set; }
     }
 }

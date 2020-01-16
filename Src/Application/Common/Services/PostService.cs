@@ -47,5 +47,19 @@ namespace Discussor.Core.Application.Common.Services
         {
             return await _postRepository.Update(post);
         }
+
+        public IEnumerable<Post> GetPostsByThemeId(int themeId, int pageNumber, int pageSize)
+        {
+            return _postRepository.GetAllPosts()
+                .Where(p => p.ThemeId == themeId)
+                .Skip(pageSize * (pageNumber - 1))
+                .Take(pageSize)
+                .ToList();
+        }
+
+        public int GetPostsNumberByThemeId(int themeId)
+        {
+            return _postRepository.GetAllPosts().Where(post => post.ThemeId == themeId).Count();
+        }
     }
 }

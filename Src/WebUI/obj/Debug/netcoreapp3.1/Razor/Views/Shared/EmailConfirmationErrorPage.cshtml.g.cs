@@ -19,8 +19,15 @@ using Discussor.WebUI.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\Acer\source\repos\Kravets.AspNetCore.Discussor\Src\WebUI\Views\_ViewImports.cshtml"
+using Discussor.WebUI.Infrastructure.Pagination;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"990ac43b3cc23fb41ed0186f050e76dbcb9ff408", @"/Views/Shared/EmailConfirmationErrorPage.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1bd8a8af1013f688867e9fad86449c175fc4140f", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fdb73938f0887df230a9efa42409ebf94e37aa98", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_EmailConfirmationErrorPage : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("btn btn-primary btn-lg back-to-themes-btn"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -51,7 +58,7 @@ using Discussor.WebUI.Models;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("<style>\r\n    .error {\r\n        text-align: center;\r\n    }\r\n\r\n    .back-to-themes-btn {\r\n        margin-top: 25px;\r\n    }\r\n</style>\r\n\r\n<div class=\"container text-light error\">\r\n    <h1>Confirm your email!</h1>\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "990ac43b3cc23fb41ed0186f050e76dbcb9ff4084246", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "990ac43b3cc23fb41ed0186f050e76dbcb9ff4084468", async() => {
                 WriteLiteral("\r\n        Back to themes\r\n    ");
             }
             );

@@ -12,16 +12,13 @@ namespace Discussor.Core.Application.Posts.Queries.GetPost
     {
         private readonly IPostService _postService;
         private readonly IReplyService _replyService;
-        private readonly IUserService _userService;
 
         public GetPostQueryHandler(
             IPostService postService,
-            IReplyService replyService,
-            IUserService userService)
+            IReplyService replyService)
         {
             _postService = postService;
             _replyService = replyService;
-            _userService = userService;
         }
 
         public async Task<PostViewModel> Handle(GetPostQuery request, CancellationToken cancellationToken)
@@ -31,7 +28,7 @@ namespace Discussor.Core.Application.Posts.Queries.GetPost
             if (post == null)
                 throw new NotFoundException(nameof(Post), request.PostId);
 
-            var replies =  _replyService.GetRepliesByPostId(request.PostId)
+            var replies =  _replyService.GetRepliesByPostId(request.PostId, request.PageNumber, request.PageSize)
                 .Select(reply => new ReplyDto
                 {
                     Id = reply.Id,
@@ -58,7 +55,8 @@ namespace Discussor.Core.Application.Posts.Queries.GetPost
                 DateOfCreation = post.DateOfCreation,
                 ThemeId = post.ThemeId,
                 Replies = replies,
-                Creator = postCreator
+                Creator = postCreator,
+                NumberOfAllReplies = _replyService.GetRepliesNumberByPostId(request.PostId)
             };
 
             return result;

@@ -18,9 +18,10 @@
     </div>
 } else
 {
-    @foreach (var post in Model.Posts)
-    {
-        <div class="container content text-light">
+    <div class="container content text-light">
+
+        @foreach (var post in Model.Posts)
+        {
             <div class="row post">
                 <div class="col-5 post-title">
                     <a asp-action="Post" asp-controller="Post" asp-route-postId="@post.Id">
@@ -34,6 +35,22 @@
                     @post.Creator.NickName
                 </div>
             </div>
+        }
+
+        <div class="pager">
+            <cs-pager cs-paging-pagenumber="(@ViewData["PagingInfo"] as PagingInfo).PageNumber"
+                      cs-paging-totalitems="(@ViewData["PagingInfo"] as PagingInfo).TotalItems"
+                      cs-paging-pagesize="(@ViewData["PagingInfo"] as PagingInfo).PageSize"
+                      cs-pagenumber-param="pagenumber"
+                      asp-route-themeId="@Model.ThemeId"
+                      asp-controller="Post"
+                      asp-action="Posts"
+                      cs-pager-li-current-class="page-item active"
+                      cs-pager-li-other-class="page-item"
+                      cs-pager-li-non-active-class="page-item disabled"
+                      cs-pager-link-current-class="page-link"
+                      cs-pager-link-other-class="page-link">
+            </cs-pager>
         </div>
-    }
+    </div>
 }

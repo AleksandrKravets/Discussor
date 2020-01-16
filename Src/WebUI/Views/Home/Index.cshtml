@@ -2,38 +2,6 @@
 
 <link href="~/css/Index.css" rel="stylesheet" />
 
-<div class="container messageContainer">
-    @if (TempData["Message"] != null)
-    {
-        <div class="alert alert-danger">
-            @TempData["Message"].
-            <a asp-action="ResendEmail" asp-controller="Account"> Resend.</a>
-        </div>
-    }
-</div>
-
-@if (Model.Themes.Count() == 0 && User.Identity.IsAuthenticated)
-{
-    <div class="container message-container text-light">
-        <h1>There are no themes. You can leave one ^_^</h1>
-    </div>
-} else
-{
-    @foreach (var theme in Model.Themes)
-    {
-        <div class="container content text-light">
-            <div class="row theme">
-                <div class="col-2 theme-image-block">
-                   <img class="theme-image" src="@string.Format("data:image/png;base64,{0}", Convert.ToBase64String(theme.Image))">
-                </div>
-                <div class="col theme-block-content">
-                    <div class="col-9" style="padding:7px;"><a asp-action="Posts" asp-controller="Post" asp-route-themeId="@theme.Id">@theme.Title</a></div>
-                    <div class="col-3" style="padding:7px;">Posts: @theme.PostsNumber</div>
-                </div>
-            </div>
-        </div>
-    }
-}
 
 @if (User.Identity.IsAuthenticated)
 {
@@ -44,12 +12,44 @@
     </div>
 }
 
-@*<div class="col-12 theme">
-    <div class="col-2 theme-image-block">
-        <img class="theme-image" src="@string.Format("data:image/png;base64,{0}", Convert.ToBase64String(theme.Image))">
+@if (Model.Themes.Count() == 0 && User.Identity.IsAuthenticated)
+{
+    <div class="container message-container text-light">
+        <h1>There are no themes. You can leave one ^_^</h1>
     </div>
-    <div class="col-10 theme-block-content">
-        <div class="col-9 theme-title"><a asp-action="Posts" asp-controller="Post" asp-route-themeId="@theme.Id">@theme.Title</a></div>
-        <div class="col-3 theme-replies-number">Posts: @theme.PostsNumber</div>
+} else
+{
+    <div class="container content text-light">
+
+        @foreach (var theme in Model.Themes)
+        {
+            <div class="row theme">
+                <div class="col-2 theme-image-block">
+                    <img class="theme-image" src="@string.Format("data:image/png;base64,{0}", Convert.ToBase64String(theme.Image))">
+                </div>
+                <div class="col theme-block-content">
+                    <div class="col-9" style="padding:7px;"><a asp-action="Posts" asp-controller="Post" asp-route-themeId="@theme.Id">@theme.Title</a></div>
+                    <div class="col-3" style="padding:7px;">Posts: @theme.PostsNumber</div>
+                </div>
+            </div>
+        }
+
+        <div class="pager">
+            <cs-pager cs-paging-pagenumber="(@ViewData["PagingInfo"] as PagingInfo).PageNumber"
+                      cs-paging-totalitems="(@ViewData["PagingInfo"] as PagingInfo).TotalItems"
+                      cs-paging-pagesize="(@ViewData["PagingInfo"] as PagingInfo).PageSize"
+                      cs-pagenumber-param="pagenumber"
+                      asp-controller="Home"
+                      asp-action="Index"
+                      cs-pager-li-current-class="page-item active"
+                      cs-pager-li-other-class="page-item"
+                      cs-pager-li-non-active-class="page-item disabled"
+                      cs-pager-link-current-class="page-link"
+                      cs-pager-link-other-class="page-link">
+            </cs-pager>
+        </div>
     </div>
-</div>*@
+
+}
+
+

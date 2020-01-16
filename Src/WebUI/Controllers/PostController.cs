@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Discussor.WebUI.Infrastructure.Pagination;
 
 namespace Discussor.WebUI.Controllers
 {
@@ -22,16 +23,42 @@ namespace Discussor.WebUI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Posts(int themeId)
+        public async Task<IActionResult> Posts(int themeId, int pageNumber = 1, int pageSize = 7)
         {
-            var posts = await Mediator.Send(new GetPostsListQuery { ThemeId = themeId });
+            var posts = await Mediator.Send(new GetPostsListQuery 
+            { 
+                ThemeId = themeId, 
+                PageNumber = pageNumber,
+                PageSize = pageSize
+            });
+
+            ViewData["PagingInfo"] = new PagingInfo
+            {
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalItems = posts.NumberOfAllPosts
+            };
+
             return View(posts);
         }
 
         [HttpGet]
-        public async Task<IActionResult> Post(int postId)
+        public async Task<IActionResult> Post(int postId, int pageNumber = 1, int pageSize = 7)
         {
-            var post = await Mediator.Send(new GetPostQuery { PostId = postId });
+            var post = await Mediator.Send(new GetPostQuery 
+            {
+                PostId = postId,
+                PageSize = pageSize,
+                PageNumber = pageNumber
+            });
+
+            ViewData["PagingInfo"] = new PagingInfo
+            {
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalItems = post.NumberOfAllReplies
+            };
+
             return View(post);
         }
 
