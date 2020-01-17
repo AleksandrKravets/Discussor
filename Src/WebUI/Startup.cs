@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Discussor.Core.Application;
 using Discussor.Infrastructure;
+using FluentValidation.AspNetCore;
+using Discussor.Core.Application.Common.Contracts.Services;
 
 namespace Discussor.WebUI
 {
@@ -21,7 +23,10 @@ namespace Discussor.WebUI
         {
             services.AddApplication();
             services.AddInfrastructure(Configuration);
-            services.AddControllersWithViews();
+
+            services.AddControllersWithViews()
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<IPostService>());
+
             services.AddCloudscribePagination();
         }
 
