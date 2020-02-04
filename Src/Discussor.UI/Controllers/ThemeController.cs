@@ -21,13 +21,6 @@ namespace Discussor.WebUI.Controllers
             _userManager = userManager;
         }
 
-        [HttpGet]
-        [Authorize]
-        [EmailConfirmation]
-        public IActionResult Create()
-        {
-            return View(new CreateThemeViewModel());
-        }
 
         [HttpPost]
         [Authorize]
@@ -45,11 +38,10 @@ namespace Discussor.WebUI.Controllers
                     CreatorId = currentUser.Id
                 });
 
-                return RedirectToAction("Index", "Home");
+                return Ok();
             }
 
-            ModelState.AddModelError("", "The entered data is incorrect");
-            return View(model);
+            return BadRequest();
         }
     }
 }

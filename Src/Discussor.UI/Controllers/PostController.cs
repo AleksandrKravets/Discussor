@@ -9,9 +9,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Discussor.WebUI.Infrastructure.Pagination;
+using Microsoft.AspNetCore.Http;
 
-//
 namespace Discussor.WebUI.Controllers
 {
     public class PostController : BaseController
@@ -23,52 +22,26 @@ namespace Discussor.WebUI.Controllers
             _userManager = userManager;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Posts(int themeId, int pageNumber = 1, int pageSize = 7)
+        [HttpGet("{themeId}")]
+        public async Task<IActionResult> Posts(int themeId)
         {
             var posts = await Mediator.Send(new GetPostsListQuery 
             { 
-                ThemeId = themeId, 
-                PageNumber = pageNumber,
-                PageSize = pageSize
+                ThemeId = themeId,  //удалить параметры в классе запроса
             });
 
-            ViewData["PagingInfo"] = new PagingInfo
-            {
-                PageNumber = pageNumber,
-                PageSize = pageSize,
-                TotalItems = posts.NumberOfAllPosts
-            };
-
-            return View(posts);
+            return Ok(posts);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Post(int postId, int pageNumber = 1, int pageSize = 7)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Post(int id)
         {
             var post = await Mediator.Send(new GetPostQuery 
             {
-                PostId = postId,
-                PageSize = pageSize,
-                PageNumber = pageNumber
+                PostId = id,//удалить параметры в классе запроса
             });
 
-            ViewData["PagingInfo"] = new PagingInfo
-            {
-                PageNumber = pageNumber,
-                PageSize = pageSize,
-                TotalItems = post.NumberOfAllReplies
-            };
-
-            return View(post);
-        }
-
-        [HttpGet]
-        [Authorize]
-        [EmailConfirmation]
-        public IActionResult Create(int themeId)
-        {
-            return View(new CreatePostCommand { ThemeId = themeId });
+            return Ok(post);
         }
 
         [HttpPost]
@@ -81,30 +54,13 @@ namespace Discussor.WebUI.Controllers
                 var currentUser = await _userManager.GetUserAsync(HttpContext.User);
                 command.CreatorId = currentUser.Id;
                 await Mediator.Send(command);
-                return RedirectToAction("Posts", new { themeId = command.ThemeId });
+                return Ok();
             }
 
-            ModelState.AddModelError("", "The entered data is incorrect");
-            return View(command);
+            return BadRequest();
         }
 
-        [HttpGet]
-        [Authorize]
-        [EmailConfirmation]
-        public async Task<IActionResult> Edit(int postId)
-        {
-            var post = await Mediator.Send(new GetPostQuery { PostId = postId });
-
-            return View(new UpdatePostCommand
-            {
-                PostId = postId,
-                Content = post.Content,
-                Title = post.Title,
-                ThemeId = post.ThemeId
-            });
-        }
-
-        [HttpPost]
+        [HttpPut]
         [Authorize]
         [EmailConfirmation]
         public async Task<IActionResult> Edit(UpdatePostCommand command)
@@ -112,19 +68,19 @@ namespace Discussor.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 await Mediator.Send(command);
-                return RedirectToAction("Posts", "Post", new { command.ThemeId });
+                return Ok();
             }
 
-            ModelState.AddModelError("", "The entered data is incorrect");
-            return View(command);
+            return BadRequest();
         }
 
+        [HttpDelete("{id}")]
         [Authorize]
         [EmailConfirmation]
-        public async Task<IActionResult> Delete(int postId, int themeId)
+        public async Task<IActionResult> Delete(int id)
         {
-            await Mediator.Send(new DeletePostCommand { PostId = postId });
-            return RedirectToAction("Posts", "Post", new { themeId });
+            await Mediator.Send(new DeletePostCommand { PostId = id });
+            return NoContent();
         }
     }
 }

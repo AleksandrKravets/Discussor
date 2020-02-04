@@ -4,7 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Discussor.WebUI.Controllers
 {
-    public class BaseController : Controller
+    [ApiController]
+    [Route("api/[controller]/[action]")]
+    public class BaseController : ControllerBase
     {
         private IMediator _mediator;
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();

@@ -22,11 +22,7 @@ namespace Discussor.WebUI.Controllers
             _userManager = userManager;
         }
 
-        [HttpGet]
-        public IActionResult Reply(int postId)
-        {
-            return View(new CreateReplyCommand { PostId = postId });
-        }
+        // получать запросы по postId
 
         [HttpPost]
         public async Task<IActionResult> Reply(CreateReplyCommand command)
@@ -36,43 +32,29 @@ namespace Discussor.WebUI.Controllers
                 var currentUser = await _userManager.GetUserAsync(HttpContext.User);
                 command.CreatorId = currentUser.Id;
                 await Mediator.Send(command);
-                return RedirectToAction("Post", "Post", new { postId = command.PostId });
+                return Ok();
             }
 
-            ModelState.AddModelError("", "The entered data is incorrect");
-            return View(command);
+            return BadRequest();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Edit(int replyId)
-        {
-            var reply = await Mediator.Send(new GetReplyQuery { ReplyId = replyId });
-
-            return View(new UpdateReplyCommand
-            {
-                Content = reply.Content,
-                ReplyId = reply.Id,
-                PostId = reply.PostId
-            });
-        }
-
-        [HttpPost]
+        [HttpPut]
         public async Task<IActionResult> Edit(UpdateReplyCommand command)
         {
             if (ModelState.IsValid)
             {
                 await Mediator.Send(command);
-                return RedirectToAction("Post", "Post", new { postId = command.PostId });
+                return Ok();
             }
 
-            ModelState.AddModelError("", "The entered data is incorrect");
-            return View(command);
+            return BadRequest();
         }
 
-        public async Task<IActionResult> Delete(int replyId, int postId)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            await Mediator.Send(new DeleteReplyCommand { ReplyId = replyId });
-            return RedirectToAction("Post", "Post", new { postId });
+            await Mediator.Send(new DeleteReplyCommand { ReplyId = id });
+            return NoContent();
         }
     }
 }
