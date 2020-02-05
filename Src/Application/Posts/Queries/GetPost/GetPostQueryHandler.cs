@@ -28,7 +28,7 @@ namespace Discussor.Core.Application.Posts.Queries.GetPost
             if (post == null)
                 throw new NotFoundException(nameof(Post), request.PostId);
 
-            var replies =  _replyService.GetRepliesByPostId(request.PostId, request.PageNumber, request.PageSize)
+            var replies =  _replyService.GetRepliesByPostId(request.PostId)
                 .Select(reply => new ReplyDto
                 {
                     Id = reply.Id,
@@ -55,8 +55,7 @@ namespace Discussor.Core.Application.Posts.Queries.GetPost
                 DateOfCreation = post.DateOfCreation,
                 ThemeId = post.ThemeId,
                 Replies = replies,
-                Creator = postCreator,
-                NumberOfAllReplies = _replyService.GetRepliesNumberByPostId(request.PostId)
+                Creator = postCreator
             };
 
             return result;

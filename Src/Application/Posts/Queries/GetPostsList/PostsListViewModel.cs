@@ -6,6 +6,5 @@ namespace Discussor.Core.Application.Posts.Queries.GetPostsList
     {
         public IEnumerable<PostDto> Posts { get; set; }
         public int ThemeId { get; set; }
-        public int NumberOfAllPosts { get; set; }
     }
 }
